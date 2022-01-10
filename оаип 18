@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <ctime>
+#include <cmath>
+
+using namespace std;
+
+
+
+    void bsort(int* arr, int n){
+    unsigned int start_time =  clock(); 
+    int i, j, q;
+    for( i  = 0; i < 7 - 1; i++){ //цикл for
+        for( j = 0; j < 7 -i-1 ; j ++) { //цикл for
+            if (arr[j] > arr[j + 1]){ //Условие
+                q = arr[j]; //меняем местами элементы массива
+                arr[j]=arr[j+ 1];
+                arr[j+ 1]=q;
+            }
+        }
+    }
+    signed int end_time = clock(); // конечное время
+    unsigned int search_time = end_time - start_time; // искомое время
+    printf("%d ", search_time); 
+    printf("мc\n");
+    }
+    
+    
+    int main(){
+    for (int n = 1000; n <= 100000; n += 100) {
+        int* arr = new int[n];
+        for (int i = 0; i < n; i++) { 
+            arr[i] = rand() % 100; }
+
+            bsort(arr, n);
+
+                }
+
+            
+    return 0;
+}
