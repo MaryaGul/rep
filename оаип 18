@@ -211,3 +211,48 @@ int main() {
 
 	return 0;
 }
+
+
+
+#include <chrono>
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+void gnomsort(int* arr, int n) { 
+
+	auto start_time = std::chrono::steady_clock::now();
+		int i = 1, j = 2, buf;
+		while (i < n) {
+			if (arr[i - 1] > arr[i]) {
+				buf = arr[i];
+				arr[i] = arr[i - 1];
+				arr[i - 1] = buf;
+				i--;
+				if (i > 0) continue;
+			}
+			i = j++;
+		}
+
+
+
+	auto end_time = std::chrono::steady_clock::now();
+	auto search_time = std::chrono::duration_cast<std::chrono::milliseconds>(start_time - end_time);
+	std::cout << search_time.count() << " \n";//вывод времени сортировки
+
+}
+int main() {
+	for (int n = 1000; n <= 100000; n += 100) {
+		int* arr = new int[n];
+		for (int i = 0; i < n; i++) {
+			arr[i] = rand() % 100;
+		}
+
+		gnomsort(arr, n);
+
+	}
+
+
+	return 0;
+}
