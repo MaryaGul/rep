@@ -167,3 +167,47 @@ int main() {
 
 	return 0;
 }
+
+
+
+#include <chrono>
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+void viborsort(int* arr, int n) { 
+
+	auto start_time = std::chrono::steady_clock::now();
+	int i, j, min, buf;
+	for (i = 0; i < n - 1; i++) {
+		for (j = i + 1, min = i; j < n; j++) {
+			if (arr[j] < arr[min]) {
+				min = j;
+			}
+		}
+		buf = arr[i];
+		arr[i] = arr[min];
+		arr[min] = buf;
+	}
+
+
+	auto end_time = std::chrono::steady_clock::now();
+	auto search_time = std::chrono::duration_cast<std::chrono::milliseconds>(start_time - end_time);
+	std::cout << search_time.count() << " \n";//вывод времени сортировки
+
+}
+int main() {
+	for (int n = 1000; n <= 100000; n += 100) {
+		int* arr = new int[n];
+		for (int i = 0; i < n; i++) {
+			arr[i] = rand() % 100;
+		}
+
+		viborsort(arr, n);
+
+	}
+
+
+	return 0;
+}
