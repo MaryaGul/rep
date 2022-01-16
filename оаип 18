@@ -40,3 +40,47 @@ int main() {
 
 	return 0;
 }
+
+
+
+
+#include <chrono>
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+void Raschsort(int* arr, int n) { 
+
+	auto start_time = std::chrono::steady_clock::now();
+	int i, temp, step;
+	float k = 1.247;
+	for (step = n - 1; step >= 1; step /= k) {
+		for (i = 0; i < n - step; i++) {
+			if (arr[i] > arr[i + step]) {
+				temp = arr[i]; //меняем местами элементы массива
+				arr[i] = arr[i + step];
+				arr[i + step] = temp;
+			}
+		}
+	}
+
+	auto end_time = std::chrono::steady_clock::now();
+	auto search_time = std::chrono::duration_cast<std::chrono::milliseconds>(start_time - end_time);
+	std::cout << search_time.count() << " \n";//вывод времени сортировки
+
+}
+int main() {
+	for (int n = 1000; n <= 100000; n += 100) {
+		int* arr = new int[n];
+		for (int i = 0; i < n; i++) {
+			arr[i] = rand() % 100;
+		}
+
+		Raschsort(arr, n);
+
+	}
+
+
+	return 0;
+}
