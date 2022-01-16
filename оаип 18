@@ -84,3 +84,42 @@ int main() {
 
 	return 0;
 }
+
+
+#include <chrono>
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+void vstsort(int* arr, int n) { 
+
+	auto start_time = std::chrono::steady_clock::now();
+	int i, j, x;
+	for (i = 1; i < n; i++) {
+		for (j = i, x = arr[i]; (j > 0) && (arr[j - 1] > x); j--) {
+			arr[j] = arr[j - 1];
+		}
+		arr[j] = x;
+	}
+
+
+	auto end_time = std::chrono::steady_clock::now();
+	auto search_time = std::chrono::duration_cast<std::chrono::milliseconds>(start_time - end_time);
+	std::cout << search_time.count() << " \n";//вывод времени сортировки
+
+}
+int main() {
+	for (int n = 1000; n <= 100000; n += 100) {
+		int* arr = new int[n];
+		for (int i = 0; i < n; i++) {
+			arr[i] = rand() % 100;
+		}
+
+		vstsort(arr, n);
+
+	}
+
+
+	return 0;
+}
