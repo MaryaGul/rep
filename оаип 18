@@ -256,3 +256,57 @@ int main() {
 
 	return 0;
 }
+
+
+#include <chrono>
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+void qsort(int* arr, int b, int e) {
+	int buf, l = b, r = e, piv = arr[(b + e) / 2];
+	for (int i = b; i < e; i++) {
+		while (arr[l] < piv)
+			l++;
+		while (arr[r] > piv)
+			r--;
+		if (l <= r) {
+			int t = arr[l];
+			arr[l] = arr[r];
+			arr[r] = t;
+			l++;
+			r--;
+
+		}
+	} if (b < e) {
+		qsort(arr, b, r);
+		qsort(arr, l, e);
+	}
+
+void qqsort(int* arr, int n) { 
+
+	auto start_time = std::chrono::steady_clock::now();
+		qsort(arr, 0, n - 1);
+
+
+
+	auto end_time = std::chrono::steady_clock::now();
+	auto search_time = std::chrono::duration_cast<std::chrono::milliseconds>(start_time - end_time);
+	std::cout << search_time.count() << " \n";//вывод времени сортировки
+
+}
+int main() {
+	for (int n = 1000; n <= 100000; n += 100) {
+		int* arr = new int[n];
+		for (int i = 0; i < n; i++) {
+			arr[i] = rand() % 100;
+		}
+
+		qqsort(arr, n);
+
+	}
+
+
+	return 0;
+}
