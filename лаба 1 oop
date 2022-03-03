@@ -49,3 +49,29 @@ int main()
     
      return 0;
 }
+
+#include <iostream>
+#include <ctype.h>
+using namespace std;
+int main()
+{
+    char ch;
+    cout<<"Введите букву(1символ)"<<endl;
+    cin>>ch;
+    if(islower(ch)){
+        cout<<1<<" (буква строчная)"<<endl;
+    } else {
+        cout<<0<<" (буква заглавная)"<<endl;
+    }
+     
+    cout<<endl;
+    
+    float sum; 
+    cout<<"Введите сумму в долларах: "<<endl;
+    cin>>sum;
+    cout<<"Эта сумма в фунтах стерлингов равна "<<sum/1.487<<endl;
+    cout<<"Эта сумма в франках равна "<<sum/0.172<<endl;
+    cout<<"Эта сумма в немецких марках равна "<<sum/0.584<<endl;
+    cout<<"Эта сумма в японских йенов равна "<<sum/0.00955<<endl;
+    return 0;
+}
