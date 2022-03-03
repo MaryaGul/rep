@@ -133,3 +133,16 @@ int main()
     
      return 0;
 }
+
+#include <iostream>
+#include <iomanip> //подключаем библиотеку для особого вывода на экран
+using namespace std;
+int main()
+{
+    
+    cout<<setiosflags(ios::left)<<setw(17)<<"Фамилия"<<setw(9)<<"Имя"<<setw(13)<<"Адрес"<<setw(10)<<"Город"<<"\n\n"<<setw(15)<<"Петров"<<setw(17)<<"Василий"<<setw(22)<<"Кленовая 16"<<setw(2)
+    <<"Санкт-Петербург"<<endl<<setw(15)<<"Иванов"<<setw(14)<<"Сергей"<<setw(20)<<"Осиновая 3"<<setw(20)<<"Находка"<<endl<<setw(18)
+    <<"Сидоров"<<setw(11)<<"Иван"<<setw(25)<<"Березовая 21"<<setw(4)<<"Калининград"<<endl;
+
+     return 0;
+}
