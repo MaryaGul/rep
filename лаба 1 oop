@@ -128,7 +128,7 @@ int main()
     cin >>shil;
     cout<<"Введите количество пенсов: "<<endl;
     cin>>pen;
-    cout<<"Десятичных фунтов "<<(pen+=shil*12)/240+funt<<endl;
+    cout<<"Десятичных фунтов "<<"£"<<(pen+=shil*12)/240+funt<<endl;
 
     
      return 0;
