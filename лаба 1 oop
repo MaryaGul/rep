@@ -75,3 +75,17 @@ int main()
     cout<<"Эта сумма в японских йенов равна "<<sum/0.00955<<endl;
     return 0;
 }
+
+
+#include <iostream>
+using namespace std;
+int main()
+{
+    float temp;
+    cout<<"Введите температуру в градусах Цельсия"<<endl;
+    cin>>temp;
+    cout<<"Эта темперпатура в градусах по Фаренгейту равна "<<temp*9/5+32<<endl;
+  
+    return 0;
+}
+ 
