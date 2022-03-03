@@ -89,3 +89,13 @@ int main()
     return 0;
 }
  
+
+#include <iostream>
+#include <iomanip> //подключаем библиотеку для особого вывода на экран
+using namespace std;
+int main()
+{
+     cout<<setfill('.');
+     cout<<1990<<setw(10)<<135<<endl<<1991<<setw(10)<<7290<<endl<<1992<<setw(10)<<11300<<endl<<1993<<setw(10)<<16200<<endl;
+     return 0;
+}
