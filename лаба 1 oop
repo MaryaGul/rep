@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    float gall, fut;
+    cout<<"Введите объем в галлонах:"<<endl;
+    cin>>gall;
+    if( gall < 0){
+        cout<<"Объем не может быть меньше 0!"<<endl;
+    } else {
+        fut = gall/7.481;
+        cout<<"Этот объем в футах равен "<<fut<<endl;
+    }
+    return 0;
+}
