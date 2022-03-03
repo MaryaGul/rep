@@ -115,3 +115,21 @@ int main()
     
      return 0;
 }
+
+#include <iostream>
+using namespace std;
+int main()
+{   
+    
+    float funt, shil, pen;
+    cout<<"Введите количество фунтов: "<<endl;
+    cin >>funt;
+    cout<<"Введите количество шиллингов: "<<endl;
+    cin >>shil;
+    cout<<"Введите количество пенсов: "<<endl;
+    cin>>pen;
+    cout<<"Десятичных фунтов "<<(pen+=shil*12)/240+funt<<endl;
+
+    
+     return 0;
+}
