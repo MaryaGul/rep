@@ -151,13 +151,13 @@ int main()
 using namespace std;
 int main()
 {   
-    float dfunt, dfrac; 
+    float dfunt, openc; 
     int funt, shil, pen; 
     cout<<"Введите в десятичных фунтах сумму: "<<endl;
     cin>>dfunt;
     funt = static_cast<int>(dfunt); 
-    dfrac = 240*(dfunt - funt); 
-    pen = (static_cast<int>(dfrac))%12; 
-    shil = static_cast<int>((dfrac-pen)/12); 
+    openc = (dfunt - funt)*100*2.4; 
+    pen = (static_cast<int>(openc))%12; 
+    shil = static_cast<int>((openc-pen)/12); 
     cout<<"Эквивалентная сумма в старой форме записи "<<"£"<<funt<<"."<<shil<<"."<<pen<<endl;
 }
