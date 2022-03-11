@@ -161,3 +161,130 @@ int main()
     shil = static_cast<int>((openc-pen)/12); 
     cout<<"Эквивалентная сумма в старой форме записи "<<"£"<<funt<<"."<<shil<<"."<<pen<<endl;
 }
+
+
+
+#include <iostream>
+#include <iomanip>//подключаем библиотеку для особого вывода на экран
+#include <ctype.h>
+using namespace std;
+int main()
+{
+    float gall, fut;
+    cout<<"Введите объем в галлонах:"<<endl;
+    cin>>gall;
+    if( gall < 0){
+        cout<<"Объем не может быть меньше 0!"<<endl;
+    } else {
+        fut = gall/7.481;
+        cout<<"Этот объем в футах равен "<<fut<<endl;
+    }
+    
+    cout<<endl;
+    cout<<endl;
+     cout<<1990<<setw(10)<<135<<endl<<1991<<setw(10)<<7290<<endl<<1992<<setw(10)<<11300<<endl<<1993<<setw(10)<<16200<<endl;
+     
+    cout<<endl;
+    cout<<endl;
+
+
+    int num = 10;
+    const int num1 =10;
+    cout<<num1<<endl;
+    num*=2;
+    cout<<num<<endl;
+    cout<<--num<<endl;
+    
+    cout<<endl;
+    cout<<endl;
+    
+     cout<<"Выхожу один я на дорогу;"<<endl<<"Сквозь туман кремнистый путь блестит;"<<endl
+    <<"Ночь тиха. Пустыня внемлет богу,"<<endl<<"И звезда с звездою говорит."<<endl<<"\n\n"<<
+    "В небесах торжественно и чудно!"<<endl<<"Спит земля в сияньи голубом..."<<endl<<"Что же мне так больно и так трудно?"
+    <<endl<<"Жду ль чего? жалею ли о чём?"<<endl;
+    
+     
+    cout<<endl;
+    cout<<endl;
+    
+    char ch;
+    cout<<"Введите букву(1символ)"<<endl;
+    cin>>ch;
+    if(islower(ch)){
+        cout<<1<<" (буква строчная)"<<endl;
+    } else {
+        cout<<0<<" (буква заглавная)"<<endl;
+    }
+     
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+    
+    float sum; 
+    cout<<"Введите сумму в долларах: "<<endl;
+    cin>>sum;
+    cout<<"Эта сумма в фунтах стерлингов равна "<<sum/1.487<<endl;
+    cout<<"Эта сумма в франках равна "<<sum/0.172<<endl;
+    cout<<"Эта сумма в немецких марках равна "<<sum/0.584<<endl;
+    cout<<"Эта сумма в японских йенов равна "<<sum/0.00955<<endl;
+    
+    cout<<endl;
+    cout<<endl;
+    
+    float temp;
+    cout<<"Введите температуру в градусах Цельсия"<<endl;
+    cin>>temp;
+    cout<<"Эта темперпатура в градусах по Фаренгейту равна "<<temp*9/5+32<<endl;
+  
+    cout<<endl;
+    cout<<endl;
+    
+     cout<<setfill('.');
+     cout<<1990<<setw(10)<<135<<endl<<1991<<setw(10)<<7290<<endl<<1992<<setw(10)<<11300<<endl<<1993<<setw(10)<<16200<<endl;
+     return 0;
+    
+    cout<<endl;
+    cout<<endl;
+    
+    char s;
+    float a, b, c, d;
+    cout<<"Введите первую дробь: "<<endl;
+    cin >> a >> s>> b;
+    cout<<"Введите вторую дробь: "<<endl;
+    cin >> c >>s>> d;
+    cout<<"Сумма этих дробей равна "<<(a*d +b*c)<<"/"<<(b*d)<<endl;
+
+    
+    cout<<endl;
+    cout<<endl;
+    
+    float funt1, shil1, pen1;
+    cout<<"Введите количество фунтов: "<<endl;
+    cin >>funt1;
+    cout<<"Введите количество шиллингов: "<<endl;
+    cin >>shil1;
+    cout<<"Введите количество пенсов: "<<endl;
+    cin>>pen1;
+    cout<<"Десятичных фунтов "<<"£"<<(pen1+=shil1*12)/240+funt1<<endl;
+
+    
+    cout<<endl;
+    cout<<endl;
+    
+    cout<<setiosflags(ios::left)<<setw(17)<<"Фамилия"<<setw(9)<<"Имя"<<setw(13)<<"Адрес"<<setw(10)<<"Город"<<"\n\n"<<setw(15)<<"Петров"<<setw(16)<<"Василий"<<setw(21)<<"Кленовая 16"<<
+    "Санкт-Петербург"<<endl<<setw(15)<<"Иванов"<<setw(15)<<"Сергей"<<setw(21)<<"Осиновая 3"<<setw(20)<<"Находка"<<endl<<setw(16)
+    <<"Сидоров"<<setw(13)<<"Иван"<<setw(22)<<"Березовая 21"<<"Калининград"<<endl;
+    
+    cout<<endl;
+    cout<<endl;
+    
+    float dfunt, openc; 
+    int funt, shil, pen; 
+    cout<<"Введите в десятичных фунтах сумму: "<<endl;
+    cin>>dfunt;
+    funt = static_cast<int>(dfunt); 
+    openc = (dfunt - funt)*100*2.4; 
+    pen = (static_cast<int>(openc))%12; 
+    shil = static_cast<int>((openc-pen)/12); 
+    cout<<"Эквивалентная сумма в старой форме записи "<<"£"<<funt<<"."<<shil<<"."<<pen<<endl;
+}
