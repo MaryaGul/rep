@@ -17,3 +17,25 @@ int main()
     }
     return 0;
 }
+
+#include <iostream>
+using namespace std;
+int main()
+{
+    double num2;
+    int k;
+    cout<<"Введите '1' для перевода шкалы Цельсия в шкалу Фаренгейта и '2' для перевода шкалы Фаренгейта в шкалу Цельсия: "<<endl;
+    cin>>k;
+    switch(k){
+        case 1: cout<<"Введите кол-во градусов Цельсия: "<<endl;
+                cin>>num2;
+                cout<<"Значение по Фаренгейту: "<<num2*9/5+32<<endl;
+                break;
+        case 2: cout<<"Введите кол-во градусов по Фаренгейту: "<<endl;
+                cin>>num2;
+                cout<<"Значение по Цельсию: "<<(num2-32)*5/9<<endl;
+                break;
+        default: cout<<"Такой команды нет"<<endl;        
+    }        
+    return 0;
+}
