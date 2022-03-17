@@ -98,3 +98,27 @@ int main()
     } 
    return 0;  
    }  
+
+#include <iostream>//7
+using namespace std;  
+int main()  
+{  
+   float s, p;
+   int n;
+   cout<<"Введите начальный вклад: "<<endl;
+   cin>>s;
+   cout<<"Введите число лет: ";
+   cin>>n;
+   cout<<"Введите процентную ставку: ";
+   cin>>p;
+   if (p<=0 or s<=0 or n<=0){
+       cout<<"Процентная ставка, начальный влкад и число лет должны быть положительными числами!"<<endl;
+   } else{
+       for(int i = 0; i < n; i++){
+           s = s+(s*p/100);
+       }
+    cout<<"Через "<<n<<" лет вы получите "<<s<<" доллара"<<endl;   
+   }
+   
+   return 0;  
+   } 
