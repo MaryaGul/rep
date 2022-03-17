@@ -143,3 +143,22 @@ int main()
     } while(lett != 'n');
     return 0;
 }
+
+#include <iostream>//9
+using namespace std;
+
+int main()
+{
+    int g, m, res, rz;
+    cout<<"Введите число гостей ";
+    cin>>g;
+    cout<<"Введите число мест(число мест < число гостей) ";
+    cin>>m;
+    res = g;
+    for(int i = 1; i <(g-(g-m)); i++){
+        res=res*(g-1);
+        g--;
+    }
+    cout<<"Число возможных рассадок гостей за столом равно "<<res<<endl;
+    return 0;
+}
