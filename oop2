@@ -122,3 +122,24 @@ int main()
    
    return 0;  
    } 
+#include <iostream>//8
+using namespace std;
+int main()
+{
+    int pen, fut, shil, pen2, fut2, shil2, sp, ssh;
+    char lett;
+    do {
+    cout<<"Введите первую сумму(в фунтах, шиллингах и пенсах): "<<endl;
+    cin>>fut>>shil>>pen;
+    cout<<"Введите вторую сумму(в фунтах, шиллингах и пенсах): "<<endl;
+    cin>>fut2>>shil2>>pen2;
+    if(pen+pen2>=12) {shil+=1; sp = pen+pen2-12;}
+    else {sp=pen+pen2;}
+    if(shil+shil2>=20) {fut+=1; ssh = shil+shil2-20;}
+    else {ssh=shil+shil2;}
+    cout<<"Всего: "<<fut+fut2<<"."<<ssh<<"."<<sp<<endl;
+    cout<<"Выполнить еще одну операцию (у/n)?"<<endl;
+    cin>>lett;
+    } while(lett != 'n');
+    return 0;
+}
