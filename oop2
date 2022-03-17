@@ -39,3 +39,28 @@ int main()
     }        
     return 0;
 }
+
+#include <iostream>//4
+using namespace std;
+int main()
+{
+    double nm1, nm2;
+    char op, let;
+    do {cout<<"Введите первый операнд, операцию и второй операнд: "<<endl;
+    cin>>nm1>>op>>nm2;
+    switch(op){
+        case '+': cout<<"Результат равен: "<<nm1+nm2<<endl;
+                break;
+        case '-': cout<<"Результат равен: "<<nm1-nm2<<endl;
+                break;
+        case '*': cout<<"Результат равен: "<<nm1*nm2<<endl;
+                break;
+        case '/': cout<<"Результат равен: "<<nm1/nm2<<endl;
+                break;        
+        default: cout<<"Такой операции нет"<<endl;        
+    }  
+    cout<<"Выполнить еще одну операцию (у/n)?"<<endl;
+    cin>>let;
+    } while(let != 'n');
+    return 0;
+}
