@@ -187,3 +187,54 @@ int main()
    
    return 0;  
    }
+
+#include <iostream>//11
+#include<cmath>
+using namespace std;
+
+int main()
+{
+    double numm, sp, ssh;
+    char oper, let;
+    int pen, fut, shil, pen2, fut2, shil2,  a=0, b=0, i, j;
+    do {cout<<"Введите операцию, которую хоттите провести на денежной суммой: "<<endl;
+    cin>>oper;
+    switch(oper){
+        case '+': cout<<"Введите первую сумму(в фунтах, шиллингах и пенсах): "<<endl;
+                cin>>fut>>shil>>pen;
+                cout<<"Введите вторую сумму(в фунтах, шиллингах и пенсах): "<<endl;
+                cin>>fut2>>shil2>>pen2;
+                if(pen+pen2>=12) {shil+=1; sp = pen+pen2-12;}
+                else {sp=pen+pen2;}
+                if(shil+shil2>=20) {fut+=1; ssh = shil+shil2-20;}
+                else {ssh=shil+shil2;}
+                cout<<"Всего: "<<fut+fut2<<"."<<ssh<<"."<<sp<<endl;
+                break;
+        case '-': cout<<"Введите первую сумму(в фунтах, шиллингах и пенсах): "<<endl;
+                cin>>fut>>shil>>pen;
+                cout<<"Введите вторую сумму(в фунтах, шиллингах и пенсах)(Первая сумма>вторая сумма): "<<endl;
+                cin>>fut2>>shil2>>pen2;
+                if(pen2-pen<0) {shil-=1; sp = 12+pen-pen2;}
+                else {sp=pen-pen2;}
+                if(shil-shil2<0) {fut-=1; ssh = 20 + shil-shil2;}
+                else {ssh=shil-shil2;}
+                cout<<"Всего: "<<fut-fut2<<"."<<ssh<<"."<<sp<<endl;
+                break;
+        case '*': cout<<"Введите сумму(в фунтах, шиллингах и пенсах): "<<endl;
+                cin>>fut>>shil>>pen;
+                cout<<"Введите число, на которую будете умножать эту сумму(число>0): "<<endl;
+                cin>>numm;
+                if(pen*numm>12) {a+=pen*numm/12; i = pen*numm/12; sp = pen*numm-(i*12);}
+                else {sp=pen*numm;}
+                if(shil*numm>20) {b+=shil*numm/20; j = shil*numm/20; ssh = shil*numm-(j*20);}
+                else {ssh=shil*numm;}
+                cout<<"Всего: "<<fut*numm+b<<"."<<ssh+a<<"."<<sp<<endl;
+                break;
+        default: cout<<"Такой операции нет"<<endl;        
+    }  
+    cout<<"Выполнить еще одну операцию (у/n)?"<<endl;
+    cin>>let;
+    } while(let != 'n');        
+
+    return 0;
+}
