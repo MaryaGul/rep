@@ -189,7 +189,6 @@ int main()
    }
 
 #include <iostream>//11
-#include<cmath>
 using namespace std;
 
 int main()
@@ -208,7 +207,7 @@ int main()
                 else {sp=pen+pen2;}
                 if(shil+shil2>=20) {fut+=1; ssh = shil+shil2-20;}
                 else {ssh=shil+shil2;}
-                cout<<"Всего: "<<fut+fut2<<"."<<ssh<<"."<<sp<<endl;
+                cout<<"Результато: "<<fut+fut2<<"."<<ssh<<"."<<sp<<endl;
                 break;
         case '-': cout<<"Введите первую сумму(в фунтах, шиллингах и пенсах): "<<endl;
                 cin>>fut>>shil>>pen;
@@ -218,7 +217,7 @@ int main()
                 else {sp=pen-pen2;}
                 if(shil-shil2<0) {fut-=1; ssh = 20 + shil-shil2;}
                 else {ssh=shil-shil2;}
-                cout<<"Всего: "<<fut-fut2<<"."<<ssh<<"."<<sp<<endl;
+                cout<<"Результат: "<<fut-fut2<<"."<<ssh<<"."<<sp<<endl;
                 break;
         case '*': cout<<"Введите сумму(в фунтах, шиллингах и пенсах): "<<endl;
                 cin>>fut>>shil>>pen;
@@ -228,7 +227,7 @@ int main()
                 else {sp=pen*numm;}
                 if(shil*numm>20) {b+=shil*numm/20; j = shil*numm/20; ssh = shil*numm-(j*20);}
                 else {ssh=shil*numm;}
-                cout<<"Всего: "<<fut*numm+b<<"."<<ssh+a<<"."<<sp<<endl;
+                cout<<"Результат: "<<fut*numm+b<<"."<<ssh+a<<"."<<sp<<endl;
                 break;
         default: cout<<"Такой операции нет"<<endl;        
     }  
