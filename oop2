@@ -223,6 +223,7 @@ int main()
                 cin>>fut>>shil>>pen;
                 cout<<"Введите число, на которую будете умножать эту сумму(число>0): "<<endl;
                 cin>>numm;
+                numm = (int)numm;
                 if(pen*numm>12) {a+=pen*numm/12; i = pen*numm/12; sp = pen*numm-(i*12);}
                 else {sp=pen*numm;}
                 if(shil*numm>20) {b+=shil*numm/20; j = shil*numm/20; ssh = shil*numm-(j*20);}
