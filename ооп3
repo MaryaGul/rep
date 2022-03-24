@@ -86,3 +86,35 @@ int main()
     
     return 0;
 }
+#include <iostream>
+using namespace std;
+
+enum etype {  laborer, secretary, manager, accountant, executive, researcher };
+
+int main()
+{
+    cout<<"Task 6"<<endl;
+    etype position;
+    char lett;
+    cout<<"Введите первую букву должности(laborer, secretary, manager, accountant, executive, researcher): ";
+    cin>>lett;
+    switch(lett){
+        case('l'): position = laborer; break;
+        case('s'): position = secretary; break;
+        case('m'): position = manager; break;
+        case('a'): position = accountant; break;
+        case('e'): position = executive; break;
+        case('r'): position = researcher;  break;
+        default: cout<<"Такой буквы нет!"<<endl; break;
+    }
+    switch(position){
+        case 0: cout<<"Полное название должности: "<<"laborer"<<endl; break;
+        case 1: cout<<"Полное название должности: "<<"secretary"<< endl; break;
+        case 2: cout<<"Полное название должности: "<<"manager"<< endl; break;
+        case 3: cout<<"Полное название должности: "<<"accountant"<< endl; break;
+        case 4: cout<<"Полное название должности: "<<"executive"<< endl; break;
+        case 5: cout<<"Полное название должности: "<<"researcher"<< endl; break;        
+    }
+    
+    return 0;
+}
