@@ -57,3 +57,32 @@ int main()
     
     return 0;
 }
+
+#include <iostream>
+using namespace std;
+
+struct date {
+    
+   int month, day, year; 
+ 
+};
+
+int main()
+{
+    cout<<"Task 5"<<endl;
+    date month5, day5, year5;
+    char simb1, simb2;
+    cout<<"Введите день, месяц и год (в формате 31/12/2002): ";
+    cin>>day5.day>>simb1>>month5.month>>simb2>>year5.year;
+    while (day5.day <= 0 or month5.month <= 0 or year5.year <= 0 or day5.day>31 or month5.month>12  ){
+        if (day5.day <= 0 or month5.month <= 0 or year5.year) cout<<"Ошибка, значения должны быть положительным! Повторите попытку еще раз!"<<endl;
+        if (day5.day>31 or month5.month>12)  cout<<"Ошибка, значения дня и месяца должны быть существующими! Повторите попытку еще раз!"<<endl;
+        cin>>day5.day>>simb1>>month5.month>>simb2>>year5.year;
+    }   
+   
+    cout<<endl;
+    cout<<"Эта дата: "<<day5.day<<simb1<<month5.month<<simb2<<year5.year<<endl;
+   
+    
+    return 0;
+}
