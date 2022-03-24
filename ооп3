@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+struct employee {
+    
+   int number; 
+   float allowance;
+};
+
+int main()
+{
+    cout<<"Task 4"<<endl;
+    employee empl1, empl2, empl3;
+    cout<<"Введите данные о трёх сотрудниках, ";
+    cout<<"введите номер первого сотрудника сотрудника: "<<endl;
+    cin>>empl1.number;
+    while (empl1.number <= 0){
+        cout<<"Ошибка, номер сотрудника должен быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>empl1.number;
+    }   
+    cout<<"Введите величину его пособия в долларах: ";
+    cin>>empl1.allowance;
+    while (empl1.allowance <= 0){
+        cout<<"Ошибка, пособие сотрудника должно быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>empl1.allowance;
+    }
+    cout<<endl;
+    cout<<"Введите номер второго сотрудника: "<<endl;
+    cin>>empl2.number;
+    while (empl2.number <= 0){
+        cout<<"Ошибка, номер сотрудника должен быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>empl2.number;
+    }   
+    cout<<"Введите величину его пособия в долларах: ";
+    cin>>empl2.allowance;
+    while (empl2.allowance <= 0){
+        cout<<"Ошибка, пособие сотрудника должно быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>empl2.allowance;
+    }
+    cout<<endl;
+    cout<<"Введите номер третьего сотрудника: "<<endl;
+    cin>>empl3.number;
+    while (empl3.number <= 0){
+        cout<<"Ошибка, номер сотрудника должен быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>empl3.number;
+    }   
+    cout<<"Введите величину его пособия в долларах: ";
+    cin>>empl3.allowance;
+    while (empl3.allowance <= 0){
+        cout<<"Ошибка, пособие сотрудника должно быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>empl3.allowance;
+    }
+    cout<<endl;
+    cout<<"Номер первого сотрудника: "<<empl1.number<<", его пособие равно: "<<empl1.allowance<<" $"<<endl;
+    cout<<"Номер второго сотрудника: "<<empl2.number<<", его пособие равно: "<<empl2.allowance<<" $"<<endl;
+    cout<<"Номер третьего сотрудника: "<<empl3.number<<", его пособие равно: "<<empl3.allowance<<" $"<<endl;
+    
+    return 0;
+}
