@@ -387,3 +387,42 @@ int main()
     cout<<"Эквивалентная сумма в старой форме записи "<<"£"<<pounds10.pounds<<"."<<shillings10.shillings<<"."<<pence10.pence<<endl;
     return 0;
 }
+
+#include <iostream>
+using namespace std;
+
+struct fraction {
+    
+   float nummerator, denominator; 
+
+   };
+   
+int main()
+{
+    cout<<"Task 12"<<endl;
+    fraction numm1, den1, numm2, den2;
+    char op12, let, dr;
+    do {cout<<"Введите первый операнд(дробь): ";
+    cin>>numm1.nummerator>>dr>>den1.denominator;
+    cout<<"Oперацию: ";
+    cin>>op12;
+    cout<<"Второй операнд(дробь): ";
+    cin>>numm2.nummerator>>dr>>den2.denominator;
+    switch(op12){
+        case '+': cout<<"Результат равен: "<<(numm1.nummerator*den2.denominator + den1.denominator*numm2.nummerator)/(den1.denominator*den2.denominator)<<endl;
+                break;
+        case '-': cout<<"Результат равен: "<<(numm1.nummerator*den2.denominator - den1.denominator*numm2.nummerator)/(den1.denominator*den2.denominator)<<endl;
+                break;
+        case '*': cout<<"Результат равен: "<<(numm1.nummerator*numm2.nummerator)/(den1.denominator*den2.denominator)<<endl;
+                break;
+        case '/': cout<<"Результат равен: "<<(numm1.nummerator*den2.denominator)/(den1.denominator*numm2.nummerator)<<endl;
+                break;        
+        default: cout<<"Такой операции нет"<<endl;        
+    }  
+    cout<<"Выполнить еще одну операцию (у/n)?"<<endl;
+    cin>>let;
+    } while(let != 'n');
+
+    
+    return 0;
+}
