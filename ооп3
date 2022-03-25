@@ -326,3 +326,27 @@ int main()
     cout<<"Количество секунд в введенном времени: "<<totalsecs9.totalsecs<<endl;
     return 0;
 }
+#include <iostream>
+using namespace std;
+
+struct sterling {
+    
+   int pounds, shillings, pence; 
+  
+   };
+   
+int main()
+{
+    cout<<"Task 10"<<endl;
+    double dfunt, openc; 
+    int funt, shil, pen; 
+    sterling pounds10, shillings10, pence10;
+    cout<<"Введите в десятичных фунтах сумму: "<<endl;
+    cin>>dfunt;
+    pounds10.pounds = static_cast<int>(dfunt); 
+    openc = (dfunt - pounds10.pounds)*100*2.4; 
+    pence10.pence = (static_cast<int>(openc))%12; 
+    shillings10.shillings = static_cast<int>((openc-pence10.pence)/12); 
+    cout<<"Эквивалентная сумма в старой форме записи "<<"£"<<pounds10.pounds<<"."<<shillings10.shillings<<"."<<pence10.pence<<endl;
+    return 0;
+}
