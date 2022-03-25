@@ -280,3 +280,49 @@ int main()
     }
     return 0;
 }
+struct fraction {
+    
+   int nummerator, denominator; 
+   char simb;
+   };
+   
+int main()
+{
+    cout<<"Task 8"<<endl;
+    fraction numm1, den1, numm2, den2;
+    char simb8;
+    cout<<"Введите первую дробь: ";
+    cin>>numm1.nummerator>>simb8>>den1.denominator;
+    cout<<"Введите вторую дробь: ";
+    cin>>numm2.nummerator>>simb8>>den2.denominator;
+    cout<<"Сумма дробей равна: "<<(numm1.nummerator*den2.denominator +den1.denominator*numm2.nummerator)/(den1.denominator*den2.denominator)<<endl;
+    return 0;
+}
+ 
+
+9)
+#include <iostream>
+using namespace std;
+
+struct timee {
+    
+   int hours, minutes, seconds, totalsecs; 
+  
+   };
+   
+int main()
+{
+    cout<<"Task 9"<<endl;
+    timee hours9, min9, sec9, totalsecs9; 
+    char simb9;
+    cout<<"Введите время в формате часы, минуты, секунды(22:22:22) : ";
+    cin>>hours9.hours>>simb9>>min9.minutes>>simb9>>sec9.seconds;
+    while ((hours9.hours <= 0 or min9.minutes <= 0 or sec9.seconds <= 0) or (hours9.hours>=60 or min9.minutes>=60 or sec9.seconds>=60)){
+        if (hours9.hours <= 0 or min9.minutes <= 0 or sec9.seconds <= 0) cout<<"Ошибка, значения должны быть положительным! Повторите попытку еще раз!"<<endl;
+        if (hours9.hours>=60 or min9.minutes>=60 or sec9.seconds>=60)  cout<<"Ошибка, значения времени должны быть существующими! Повторите попытку еще раз!"<<endl;
+        cin>>hours9.hours>>simb9>>min9.minutes>>simb9>>sec9.seconds;
+    }   
+    totalsecs9.totalsecs = hours9.hours*3600 + min9.minutes*60 + sec9.seconds;
+    cout<<"Количество секунд в введенном времени: "<<totalsecs9.totalsecs<<endl;
+    return 0;
+}
