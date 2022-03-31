@@ -30,3 +30,40 @@ int main()
     cin>>let;    } while(let != 'n');
     return 0;
 }
+
+#include <iostream>//2
+using namespace std;
+
+struct timee {
+    
+   int hours, minutes, seconds, totalsecs, summ; 
+  
+   };
+
+long int time_to_secs(timee hours1.hours, timee min1.minutes, timee sec1.seconds){
+    
+    int long totalsecs1.totalsecs = hours1.hours*3600 + min1.minutes*60 + sec1.seconds;
+    return totalsecs1.totalsecs;
+}
+
+timee secs_to_time(long int totalsecs1.totalsecs){
+    
+    hournew.hours=sum11sec.summ/3600;
+    minnew.minutes = ( totalsecs1.totalsecs%3600)/60;
+    secnew.seconds = ( totalsecs1.totalsecs%3600)%60; 
+    return hournew.hours;
+}
+int main()
+{
+    cout<<"Task 2"<<endl;
+    timee hours1, min1, sec1, totalsecs1, hours2, min2, sec2, totalsecs2, sum11sec, hournew, secnew, minnew; 
+    char simb11;
+    cout<<"Введите первое время в формате часы, минуты, секунды(22:22:22) : ";
+    cin>>hours1.hours>>simb11>>min1.minutes>>simb11>>sec1.seconds;
+    while (hours1.hours <= 0 or min1.minutes <= 0 or sec1.seconds <= 0){
+        cout<<"Ошибка, значения должны быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>hours1.hours>>simb11>>min1.minutes>>simb11>>sec1.seconds;
+    }   
+    cout<<"Запись времени после всех действия: "<<hournew.hours<<":"<<minnew.minutes<<":"<<secnew.seconds<<endl;
+    return 0;
+}
