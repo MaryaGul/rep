@@ -1,0 +1,32 @@
+#include <iostream> //1
+using namespace std;
+int hms_to_secs(int hour, int min, int seconds){
+    long int totalsec = hour * 3600 + min * 60 + seconds;
+    return totalsec;
+}
+
+int main()
+{
+    cout<<"Task 1"<<endl;
+    int hour1, min1, sec1;
+    char  let;
+    do {cout<<"Введите количесмвто часов: ";
+    cin>>hour1;
+    cout<<"Введите количесмвто минут: ";
+    cin>>min1;
+    cout<<"Введите количесмвто секунд: ";
+    cin>>sec1;
+    while (hour1 <= 0 or min1 <= 0 or sec1 <= 0){
+        cout<<"Ошибка, значения должны быть положительным! Повторите попытку еще раз!"<<endl;
+        cout<<"Введите количесмвто часов: ";
+        cin>>hour1;
+        cout<<"Введите количесмвто минут: ";
+        cin>>min1;
+        cout<<"Введите количесмвто секунд: ";
+        cin>>sec1;
+    }
+    cout<<"Количество секунд: "<<hms_to_secs(hour1, min1, sec1)<<endl;
+    cout<<"Выполнить еще одну операцию (у/n)?"<<endl;
+    cin>>let;    } while(let != 'n');
+    return 0;
+}
