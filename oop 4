@@ -67,3 +67,56 @@ int main()
     cout<<"Запись времени после всех действия: "<<hournew.hours<<":"<<minnew.minutes<<":"<<secnew.seconds<<endl;
     return 0;
 }
+
+#include <iostream>//2
+using namespace std;
+
+struct timee {
+    
+   long hours, minutes, seconds, totalsec; 
+   long tsec;
+  
+   };
+
+long time_to_secs(timee hours11, timee min11, timee sec11){
+    
+    long totalsec = hours11.hours*3600 +min11.minutes*60 + sec11.seconds;
+    return totalsec;
+}
+
+timee secs_to_time(timee tsec1){
+    
+    timee hournew, minnew, secnew;
+    hournew.hours=tsec1.tsec/3600;
+    minnew.minutes = ( tsec1.tsec%3600)/60;
+    secnew.seconds = ( tsec1.tsec%3600)%60; 
+    cout<<hournew.hours<<":"<<minnew.minutes<<":"<<secnew.seconds<<endl;
+}
+int main()
+{
+    cout<<"Task 6"<<endl;
+    timee hours1, min1, sec1, totalsecs1, hours2, min2, sec2, totalsecs2, sum11sec, hournew, secnew, minnew, totalsec; 
+    char simb11;
+    int com;
+    cout<<"Для перевода из секунд в часы/минуты/секунды введите 1, для действия наоборот введите 2:";
+    cin>>com;
+    switch(com){
+    case 1: cout<<"Введите время в формате часы, минуты, секунды(22:22:22) : ";
+            cin>>hours1.hours>>simb11>>min1.minutes>>simb11>>sec1.seconds;
+            while (hours1.hours <= 0 or min1.minutes <= 0 or sec1.seconds <= 0){
+                cout<<"Ошибка, значения должны быть положительным! Повторите попытку еще раз!"<<endl;
+                cin>>hours1.hours>>simb11>>min1.minutes>>simb11>>sec1.seconds;
+                
+    } time_to_secs(hours1.hours, min1.minutes, sec1.seconds); break;
+    case 2: cout<<"Введите время в cекундах : ";
+    cin>>totalsec.tsec;
+    while (totalsec.tsec <= 0){
+        cout<<"Ошибка, значения должны быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>totalsec.tsec;
+    }
+    secs_to_time(totalsec); break;
+    default: cout<<"Такой команды нет"<<endl; break;
+    }
+    
+    return 0;
+}
