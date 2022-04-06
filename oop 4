@@ -158,3 +158,50 @@ int main() {
     swap(a, b);
     cout<<"После замены первое число = " <<a<<", второе число b = " <<b<<endl;
 };
+
+#include <iostream>//9
+using namespace std;
+
+struct timee {
+    
+   int hours, minutes, seconds;
+ };
+
+timee swap(timee &t1, timee &t2) {
+timee b;
+b.hours = t1.hours;  
+t1.hours = t2.hours; 
+t2.hours = b.hours;  
+
+b.minutes = t1.minutes;  
+t1.minutes = t2.minutes; 
+t2.minutes = b.minutes;  
+
+b.seconds = t1.seconds;  
+t1.seconds = t2.seconds; 
+t2.seconds = b.seconds; 
+cout<<"Запись первого времени после замены: "<<t1.hours<<":"<<t1.minutes<<":"<<t1.seconds<<endl;
+cout<<"Запись второго времени после замены: "<<t2.hours<<":"<<t2.minutes<<":"<<t2.seconds<<endl;
+return t1, t2;
+}
+
+
+int main() {
+    int a, b;
+    timee t1, t2;
+    char simb;
+    cout<<"Введите первое время формат(22:22:22) ";
+    cin>>t1.hours>>simb>>t1.minutes>>simb>>t1.seconds;
+    while (t1.hours <= 0 or t1.minutes <= 0 or t1.seconds <= 0){
+        cout<<"Ошибка, значения должны быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>t1.hours>>simb>>t1.minutes>>simb>>t1.seconds;
+    } 
+    cout<<"Введите второе время в формате часы, минуты, секунды(22:22:22): ";
+    cin>>t2.hours>>simb>>t2.minutes>>simb>>t2.seconds;
+    while (t2.hours <= 0 or t2.minutes <= 0 or t2.seconds <= 0){
+        cout<<"Ошибка, значения должны быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>t2.hours>>simb>>t2.minutes>>simb>>t2.seconds;
+    }
+    swap(t1, t2);
+   
+};
