@@ -205,3 +205,25 @@ int main() {
     swap(t1, t2);
    
 };
+
+
+#include <iostream>//10.1
+using namespace std;
+    
+int foo_count(int k){
+    int count=k;
+    k++;
+    return count;
+}
+    
+int main(){
+    
+    cout<<"Task 10(global)"<<endl;
+    int k1=0;
+    for (int i=0;i<=9;i++) {
+        cout<<"Функция вызывалась(глобальная переменная) "<<foo_count(k1)<<" раз"<<endl;
+        k1++;
+    }
+    return 0;   
+}
+  
