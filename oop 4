@@ -85,3 +85,56 @@ int main()
 
     return 0;
 }
+
+#include <iostream>//7
+using namespace std;
+
+double power(double n, int p){
+    double g;
+    g = n;
+    for(int i = 1 ; i < p; i ++)
+        g = g*n;
+    return g;
+}
+double power(char n, int p){
+    double g;
+    g = n;
+    for(int i = 1 ; i < p; i ++)
+        g = g*n;
+    return g;
+}
+double power(int n, int p){
+    double g;
+    g = n;
+    for(int i = 1 ; i < p; i ++)
+        g = g*n;
+    return g;
+}
+double power(long n, int p){
+    double g;
+    g = n;
+    for(int i = 1 ; i < p; i ++)
+        g = g*n;
+    return g;
+}
+double power(float n, int p){
+    double g;
+    g = n;
+    for(int i = 1 ; i < p; i ++)
+        g = g*n;
+    return g;
+}
+int main(){
+    double n1;
+    int p1, n3;
+    long n4;
+    float n5;
+    char n2;
+    cout<<"task7"<<endl;
+    cout<<"Введите числа типа double, char, int, long, float: ";
+    cin>>n1>>n2>>n3>>n4>>n5;
+    cout<<"Введите степень, в которую вы хотитек возвести каждое из чисел: ";
+    cin>>p1;
+    cout<<"Результат: "<<power(n1, p1)<<", "<<power(n2, p1)<<", "<<power(n3, p1)<<", "<<power(n4, p1)<<", "<<power(n5, p1)<<endl;
+    return 0;
+}
