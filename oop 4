@@ -1,4 +1,4 @@
-#include <iostream> //1
+#include <iostream> //5
 using namespace std;
 int hms_to_secs(int hour, int min, int seconds){
     long int totalsec = hour * 3600 + min * 60 + seconds;
@@ -31,92 +31,56 @@ int main()
     return 0;
 }
 
-#include <iostream>//2
+
+#include <iostream>//6
 using namespace std;
 
 struct timee {
     
-   int hours, minutes, seconds, totalsecs, summ; 
+   int hours, minutes, seconds;
+   long summ;
+   
   
-   };
+ };
 
-long int time_to_secs(timee hours1.hours, timee min1.minutes, timee sec1.seconds){
-    
-    int long totalsecs1.totalsecs = hours1.hours*3600 + min1.minutes*60 + sec1.seconds;
-    return totalsecs1.totalsecs;
-}
-
-timee secs_to_time(long int totalsecs1.totalsecs){
-    
-    hournew.hours=sum11sec.summ/3600;
-    minnew.minutes = ( totalsecs1.totalsecs%3600)/60;
-    secnew.seconds = ( totalsecs1.totalsecs%3600)%60; 
-    return hournew.hours;
-}
-int main()
-{
-    cout<<"Task 2"<<endl;
-    timee hours1, min1, sec1, totalsecs1, hours2, min2, sec2, totalsecs2, sum11sec, hournew, secnew, minnew; 
-    char simb11;
-    cout<<"Введите первое время в формате часы, минуты, секунды(22:22:22) : ";
-    cin>>hours1.hours>>simb11>>min1.minutes>>simb11>>sec1.seconds;
-    while (hours1.hours <= 0 or min1.minutes <= 0 or sec1.seconds <= 0){
-        cout<<"Ошибка, значения должны быть положительным! Повторите попытку еще раз!"<<endl;
-        cin>>hours1.hours>>simb11>>min1.minutes>>simb11>>sec1.seconds;
-    }   
-    cout<<"Запись времени после всех действия: "<<hournew.hours<<":"<<minnew.minutes<<":"<<secnew.seconds<<endl;
-    return 0;
-}
-
-#include <iostream>//2
-using namespace std;
-
-struct timee {
-    
-   long hours, minutes, seconds, totalsec; 
-   long tsec;
-  
-   };
-
-long time_to_secs(timee hours11, timee min11, timee sec11){
-    
-    long totalsec = hours11.hours*3600 +min11.minutes*60 + sec11.seconds;
+long time_to_secs(timee t){
+    long totalsec = t.hours*3600 + t.minutes*60 + t.seconds;
     return totalsec;
+    
+    
+}  
+
+timee secs_to_time(long summsec){
+    timee tsum;
+    tsum.hours=summsec/3600;
+    tsum.minutes = (summsec%3600)/60;
+    tsum.seconds = (summsec%3600)%60;
+    cout<<"Запись времени после сложения секунд: "<<tsum.hours<<":"<<tsum.minutes<<":"<<tsum.seconds<<endl;
+    return tsum;
+    
 }
 
-timee secs_to_time(timee tsec1){
-    
-    timee hournew, minnew, secnew;
-    hournew.hours=tsec1.tsec/3600;
-    minnew.minutes = ( tsec1.tsec%3600)/60;
-    secnew.seconds = ( tsec1.tsec%3600)%60; 
-    cout<<hournew.hours<<":"<<minnew.minutes<<":"<<secnew.seconds<<endl;
-}
 int main()
 {
+    timee t1, t2;
+    long sumsec;
     cout<<"Task 6"<<endl;
-    timee hours1, min1, sec1, totalsecs1, hours2, min2, sec2, totalsecs2, sum11sec, hournew, secnew, minnew, totalsec; 
-    char simb11;
-    int com;
-    cout<<"Для перевода из секунд в часы/минуты/секунды введите 1, для действия наоборот введите 2:";
-    cin>>com;
-    switch(com){
-    case 1: cout<<"Введите время в формате часы, минуты, секунды(22:22:22) : ";
-            cin>>hours1.hours>>simb11>>min1.minutes>>simb11>>sec1.seconds;
-            while (hours1.hours <= 0 or min1.minutes <= 0 or sec1.seconds <= 0){
-                cout<<"Ошибка, значения должны быть положительным! Повторите попытку еще раз!"<<endl;
-                cin>>hours1.hours>>simb11>>min1.minutes>>simb11>>sec1.seconds;
-                
-    } time_to_secs(hours1.hours, min1.minutes, sec1.seconds); break;
-    case 2: cout<<"Введите время в cекундах : ";
-    cin>>totalsec.tsec;
-    while (totalsec.tsec <= 0){
+    char simb;
+    cout<<"Введите первое время в формате часы, минуты, секунды(22:22:22): ";
+    cin>>t1.hours>>simb>>t1.minutes>>simb>>t1.seconds;
+    while (t1.hours <= 0 or t1.minutes <= 0 or t1.seconds <= 0){
         cout<<"Ошибка, значения должны быть положительным! Повторите попытку еще раз!"<<endl;
-        cin>>totalsec.tsec;
-    }
-    secs_to_time(totalsec); break;
-    default: cout<<"Такой команды нет"<<endl; break;
-    }
-    
+        cin>>t1.hours>>simb>>t1.minutes>>simb>>t1.seconds;
+    }   
+    cout<<"Введите второе время в формате часы, минуты, секунды(22:22:22): ";
+    cin>>t2.hours>>simb>>t2.minutes>>simb>>t2.seconds;
+    while (t2.hours <= 0 or t2.minutes <= 0 or t2.seconds <= 0){
+        cout<<"Ошибка, значения должны быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>t2.hours>>simb>>t2.minutes>>simb>>t2.seconds;
+    }   
+    sumsec = time_to_secs(t1) + time_to_secs(t2);
+    secs_to_time(sumsec);
+
+
     return 0;
 }
