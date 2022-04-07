@@ -244,3 +244,60 @@ int main(){
     }
     return 0;   
 }
+
+#include <iostream>//11
+using namespace std;
+
+struct sterling {
+    
+   int pounds, shillings, pence, summ; 
+  
+   };
+
+sterling foo1(int pounds1, int shillings1, int pence1){
+    sterling sum0;
+    sum0.pounds = pounds1;
+    sum0.shillings = shillings1;
+    sum0.pence = pence1;
+    cout<<"Фунты = "<<sum0.pounds<<", шиллинги - "<<sum0.shillings<<", пенсы - "<<sum0.pence<<endl;
+    return sum0;
+}
+
+sterling foo2(sterling summ1, sterling summ2){
+    sterling rez;
+    if(summ1.pence+summ2.pence>=12) {summ1.shillings+=1; rez.pence = summ1.pence+summ2.pence-12;}
+    else {rez.pence=summ1.pence+summ2.pence;}
+    if(summ1.shillings+summ2.shillings>=20) {summ1.pounds+=1; rez.shillings = summ1.shillings+summ2.shillings-20;}
+    else {rez.shillings = summ1.shillings+summ2.shillings;}
+    cout<<"Всего: "<<summ1.pounds+summ2.pounds<<"."<<rez.shillings<<"."<<rez.pence<<endl;
+    return rez;
+}
+
+sterling foo3(sterling ss4){
+    cout<<"Введенная сумма: ";
+    cout<<ss4.pounds<<"."<<ss4.shillings<<"."<<ss4.pence<<endl;
+    return ss4;
+    
+}
+
+
+int main()
+{
+    sterling s0, s1, s2, s4;
+    int pounds0, shillings0, pence0 ;
+    char lett, dott;
+    cout<<"Введите сумму(в фунтах, шиллингах и пенсах): "<<endl;
+    cin>>pounds0>>dott>>shillings0>>dott>>pence0;
+    foo1(pounds0, shillings0, pence0 );
+    cout<<endl;
+    cout<<"Введите первую сумму(в фунтах, шиллингах и пенсах): "<<endl;
+    cin>>s1.pounds>>dott>>s1.shillings>>dott>>s1.pence;
+    cout<<"Введите сумму(в фунтах, шиллингах и пенсах): "<<endl;
+    cin>>s2.pounds>>dott>>s2.shillings>>dott>>s2.pence;
+    foo2(s1, s2);
+    cout<<endl;
+    cout<<"Введите сумму(в фунтах, шиллингах и пенсах): "<<endl;
+    cin>>s4.pounds>>dott>>s4.shillings>>dott>>s4.pence;
+    foo3(s4);
+    return 0;
+}
