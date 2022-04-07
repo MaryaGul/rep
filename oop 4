@@ -301,3 +301,74 @@ int main()
     foo3(s4);
     return 0;
 }
+
+
+#include<iostream>//12
+using namespace std;
+
+struct fraction {
+    
+   float nummerator, denominator; 
+   float rez;
+   char simb;
+   };
+   
+fraction fadd(fraction d1_1, fraction d2_1){
+    fraction rezz_1;
+    rezz_1.rez = (d1_1.nummerator*d2_1.denominator + d1_1.denominator*d2_1.nummerator)/(d1_1.denominator*d2_1.denominator);
+    cout<<"Результат равен: "<<rezz_1.rez<<endl;
+    return rezz_1;
+}   
+
+fraction fsub(fraction d1_2, fraction d2_2){
+    fraction rezz_2;
+    rezz_2.rez = (d1_2.nummerator*d2_2.denominator - d1_2.denominator*d2_2.nummerator)/(d1_2.denominator*d2_2.denominator);
+    cout<<"Результат равен: "<<rezz_2.rez<<endl;
+    return rezz_2;
+}   
+     
+
+fraction fmul(fraction d1_3, fraction d2_3){
+    fraction rezz_3;
+    rezz_3.rez = (d1_3.nummerator*d2_3.nummerator)/(d1_3.denominator*d2_3.denominator);
+    cout<<"Результат равен: "<<rezz_3.rez<<endl;
+    return rezz_3;
+    
+}   
+  
+fraction fdiv(fraction d1_4, fraction d2_4){
+    fraction rezz_4;
+    rezz_4.rez = (d1_4.nummerator*d2_4.denominator)/(d1_4.denominator*d2_4.nummerator);
+    cout<<"Результат равен: "<<rezz_4.rez<<endl;
+    return rezz_4;
+    
+}   
+     
+int main()
+{
+    fraction d1, d2;
+    char op12, let, dr;
+    do {cout<<"Введите первый операнд(дробь): ";
+    cin>>d1.nummerator>>dr>>d1.denominator;
+    cout<<"Oперацию: ";
+    cin>>op12;
+    cout<<"Второй операнд(дробь): ";
+    cin>>d2.nummerator>>dr>>d2.denominator;
+    switch(op12){
+        case '+': fadd(d1, d2);
+                break;
+        case '-': fsub(d1, d2);
+                break;
+        case '*': fmul(d1, d2);
+                break;
+        case '/': fdiv(d1, d2);
+                break;        
+        default: cout<<"Такой операции нет"<<endl;        
+    }  
+    cout<<"Выполнить еще одну операцию (у/n)?"<<endl;
+    cin>>let;
+    } while(let != 'n');
+
+    
+    return 0;
+}
