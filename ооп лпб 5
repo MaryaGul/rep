@@ -1,0 +1,59 @@
+#include <iostream>//4
+using namespace std;
+
+struct employee {
+    
+   int number; 
+   float salary;
+};
+
+int main()
+{
+    cout<<"Task 4"<<endl;
+    employee empl1, empl2, empl3;
+    cout<<"Введите данные о трёх сотрудниках, ";
+    cout<<"введите номер первого сотрудника сотрудника: "<<endl;
+    cin>>empl1.number;
+    while (empl1.number <= 0){
+        cout<<"Ошибка, номер сотрудника должен быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>empl1.number;
+    }   
+    cout<<"Введите величину его оклада: ";
+    cin>>empl1.salary;
+    while (empl1.salary < 0){
+        cout<<"Ошибка, пособие сотрудника должно быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>empl1.salary;
+    }
+    cout<<endl;
+    cout<<"Введите номер второго сотрудника: "<<endl;
+    cin>>empl2.number;
+    while (empl2.number <= 0){
+        cout<<"Ошибка, номер сотрудника должен быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>empl2.number;
+    }   
+    cout<<"Введите величину его оклада: ";
+    cin>>empl2.salary;
+    while (empl2.salary < 0){
+        cout<<"Ошибка, пособие сотрудника должно быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>empl2.salary;
+    }
+    cout<<endl;
+    cout<<"Введите номер третьего сотрудника: "<<endl;
+    cin>>empl3.number;
+    while (empl3.number <= 0){
+        cout<<"Ошибка, номер сотрудника должен быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>empl3.number;
+    }   
+    cout<<"Введите величину его оклада: ";
+    cin>>empl3.salary;
+    while (empl3.salary < 0){
+        cout<<"Ошибка, пособие сотрудника должно быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>empl3.salary;
+    }
+    cout<<endl;
+    cout<<"Номер первого сотрудника: "<<empl1.number<<", его оклад: "<<empl1.salary<<" $"<<endl;
+    cout<<"Номер второго сотрудника: "<<empl2.number<<", его оклад: "<<empl2.salary<<" $"<<endl;
+    cout<<"Номер третьего сотрудника: "<<empl3.number<<", его оклад: "<<empl3.salary<<" $"<<endl;
+    
+    return 0;
+}
