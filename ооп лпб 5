@@ -1,8 +1,9 @@
 #include <iostream>//4
 using namespace std;
 
-struct employee {
-    
+class employee {
+public:
+
    int number; 
    float salary;
 };
