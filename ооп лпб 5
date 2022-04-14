@@ -98,3 +98,134 @@ int main()
     
     return 0;
 }
+
+
+#include <iostream>
+using namespace std;
+
+   class date {
+private:    
+   int month, day, year; 
+public:   
+   void getdate(){
+    char simb;   
+    cin>>day>>simb>>month>>simb>>year;
+    while (day <= 0 or month <= 0 or year <= 0 or day>31 or month>12  ){
+        if (day <= 0 or month <= 0 or year <=0) cout<<"Ошибка, значения должны быть положительным! Повторите попытку еще раз!"<<endl;
+        if (day>31 or month>12)  cout<<"Ошибка, значения дня и месяца должны быть существующими! Повторите попытку еще раз!"<<endl;
+        cin>>day>>simb>>month>>simb>>year;
+    }   
+   }
+    
+   void showdate(){
+    char simb = '/';  
+    cout<<"дата устройства на работу: "<<day<<simb<<month<<simb<<year<<endl; 
+       
+   }
+};
+
+//6
+class employee {
+private:
+
+   int number; 
+   float salary;
+   
+   enum etype {  laborer, secretary, manager, accountant, executive, researcher };
+   
+
+
+public:   
+   void getemploy(){
+    etype position;   
+    char simb;   
+    cin>>number;
+    char lett;
+    while (number <= 0){
+        cout<<"Ошибка, номер сотрудника должен быть положительным! Повторите попытку еще раз!"<<endl;
+        cin>>number;
+    }   
+    cout<<"Введите величину его зарплаты: ";
+    cin>>salary;
+    while (salary <= 0){
+        cout<<"Ошибка, зарплата сотрудника должна быть положительной! Повторите попытку еще раз!"<<endl;
+        cin>>salary;
+    }
+    cout<<"Введите первую букву должности(laborer, secretary, manager, accountant, executive, researcher): ";
+    cin>>lett;
+    switch(lett){
+        case('l'): position = laborer; break;
+        case('s'): position = secretary; break;
+        case('m'): position = manager; break;
+        case('a'): position = accountant; break;
+        case('e'): position = executive; break;
+        case('r'): position = researcher;  break;
+        default: cout<<"Такой буквы нет!"<<endl; break;
+    }
+    
+   } 
+   
+   
+   void putemploy(){
+    char simb = '/'; 
+    etype position;
+    cout<<"Номер сотрудника: "<<number<<", его зарплата равно: "<<salary<<" $"<<endl;
+     switch(position){
+        case 0: cout<<"Полное название должности: "<<"laborer"<<endl; break;
+        case 1: cout<<"Полное название должности: "<<"secretary"<< endl; break;
+        case 2: cout<<"Полное название должности: "<<"manager"<< endl; break;
+        case 3: cout<<"Полное название должности: "<<"accountant"<< endl; break;
+        case 4: cout<<"Полное название должности: "<<"executive"<< endl; break;
+        case 5: cout<<"Полное название должности: "<<"researcher"<< endl; break;        
+    }
+     
+       
+   }
+   
+};
+
+
+
+
+
+int main()
+{
+    cout<<"Task 6"<<endl;
+    employee e1, e2, e3;
+    date d1, d2, d3;
+    cout<<"Введите данные о трёх сотрудниках, ";
+    cout<<"Введите номер первого сотрудника сотрудника: ";
+    e1.getemploy();
+    cout<<"Введите его дату принятия на работу (день, месяц и год (в формате 31/12/2002)): ";
+    d1.getdate();
+    cout<<endl;
+    
+    
+    cout<<"Введите номер второго сотрудника сотрудника: ";
+    e2.getemploy();
+    cout<<"Введите его дату принятия на работу (день, месяц и год (в формате 31/12/2002)): ";
+    d2.getdate();
+    cout<<endl;
+    
+    
+    
+    cout<<"Введите номер третьего сотрудника сотрудника: ";
+    e3.getemploy();
+    cout<<"Введите его дату принятия на работу (день, месяц и год (в формате 31/12/2002)): ";
+    d3.getdate();
+    cout<<endl;
+    
+    
+    cout<<"Первый сотрудник: ";
+    e1.putemploy();
+    d1.showdate();
+    cout<<endl;
+    cout<<"Второй сотрудник: ";
+    e2.putemploy();
+    d2.showdate();
+    cout<<endl;
+    cout<<"Третий сотрудник: ";
+    e3.putemploy();
+    d3.showdate();
+    return 0;
+}
