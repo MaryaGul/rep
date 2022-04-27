@@ -346,3 +346,88 @@ int main()
 
     return 0;
 }
+
+
+#include <iostream>//10
+using namespace std;
+
+class angle
+{
+private:
+	int degrees;
+    float minets;
+    char direction;
+public:
+	angle() {
+	}
+	angle(int degrees10, float minets10, char direction10) {
+	    degrees = degrees10;
+		minets = minets10;
+		direction = direction10;
+	}
+
+	void vvod()
+	{
+		char simb;
+		cin>>degrees>>simb>>minets>>simb>>direction;
+	
+	}
+
+	void vivod()
+	{
+		cout<<degrees<<"°"<<minets<<"'"<<direction;
+	}
+};
+
+
+class ship
+{
+private:
+	static int num;
+	int ind;
+	angle shirota;
+	angle dolgota;
+public:
+	ship()
+	{
+		ind = ++num;
+	}
+	
+void vvod1()
+	{
+		char simb;
+        shirota.vvod();
+		cin>>simb;
+		dolgota.vvod();
+	}
+	
+void vivod1()
+	{
+		cout<<"Номер корабля: "<<ind<<endl;
+		cout<<"Координаты: ";
+		shirota.vivod();
+		cout<<", ";
+		dolgota.vivod();
+		cout << endl;
+	}
+	
+};
+
+int ship::num;
+
+int main()
+{
+	
+	cout<<"Task 10"<<endl;
+	ship sh1, sh2, sh3;
+	cout<<"Введите координаты трёх короблей: "<<endl;
+	sh1.vvod1();
+	sh2.vvod1();
+	sh3.vvod1();
+	cout<<"Введеные данные о кораблях: "<<endl;
+	sh1.vivod1();
+	sh2.vivod1();
+	sh3.vivod1();
+		
+	return 0;
+}
