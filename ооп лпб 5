@@ -229,3 +229,58 @@ int main()
     d3.showdate();
     return 0;
 }
+
+
+#include <iostream>//7
+using namespace std;
+
+class angle {
+private:    
+   int degrees;
+   float minets;
+   char direction;
+public: 
+
+    angle(int degrees7, float minets7, char direction7)  
+	{
+	    degrees = degrees7;
+		minets = minets7;
+		direction = direction7;
+	}
+
+   void vvod()
+	{
+		char simb;
+		cin>>degrees>>simb>>minets>>simb>>direction;
+	}
+	
+	void vivod()
+	{
+		char simb;
+		cout<<degrees<<"°"<<simb<<minets<<"'"<<simb<<direction;
+	}
+    
+   
+};
+
+int main()
+{
+    cout<<"Task 7"<<endl;
+    char let, z;
+	angle coordinat1 = angle(0, 0, 'W');
+	angle coordinat2 = angle(0, 0, 'S');
+	do {
+		cout<<"Введите координаты точки: ";
+		coordinat1.vvod();
+		cin>>z;
+		coordinat2.vvod();
+		cout<<"Введеные координаты:" << endl;
+		coordinat1.vivod();
+		cout<<endl;
+		coordinat2.vivod();
+		cout<<endl;
+		cout << "Хотите продолжить? (y/n) ";
+		cin>>let;
+	} while (let != 'n');
+	return 0;
+}
