@@ -314,3 +314,35 @@ int main()
 	ob3.vivod();
 	return 0;
 }
+
+
+#include<iostream>//9
+using namespace std;
+
+struct fraction {
+    
+   float nummerator, denominator; 
+};
+   
+   
+fraction fadd(fraction _d1, fraction _d2){
+    cout<<"Результат равен: "<<_d1.nummerator*_d2.denominator + _d1.denominator*_d2.nummerator<<"/"<<_d1.denominator * _d2.denominator<<endl;
+    return _d1;
+}   
+
+
+int main()
+{
+    fraction d1, d2;
+    char let, dr;
+    do {cout<<"Введите первый операнд(дробь): ";
+    cin>>d1.nummerator>>dr>>d1.denominator;
+    cout<<"Второй операнд(дробь): ";
+    cin>>d2.nummerator>>dr>>d2.denominator;
+    fadd(d1, d2);
+    cout<<"Выполнить еще одну операцию (у/n)?"<<endl;
+    cin>>let;
+    } while(let != 'n');
+
+    return 0;
+}
