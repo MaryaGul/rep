@@ -284,3 +284,33 @@ int main()
 	} while (let != 'n');
 	return 0;
 }
+
+
+#include <iostream>//8
+using namespace std;
+
+class serialnum{
+
+private:
+	static int num;
+	int ind;
+public:
+
+	serialnum(){
+		ind=++num;
+	}
+
+	void vivod() {
+		cout<<"Мой порядковый номер: "<<ind<<endl;
+	}
+};
+int serialnum::num;
+int main()
+{
+    cout<<"Task 8"<<endl;
+	serialnum ob1, ob2, ob3;
+	ob1.vivod();
+	ob2.vivod();
+	ob3.vivod();
+	return 0;
+}
