@@ -537,3 +537,78 @@ int main()
     
     return 0;
 }
+
+
+#include <iostream>  
+#include <cmath>
+#include <iomanip>
+using namespace std;
+
+class fraction
+{
+ 
+ public: 
+  int numerator, denominator;
+  
+  void fmul(fraction d1, fraction d2)
+  {
+   numerator = d1.numerator * d2.numerator;
+   denominator = d1.denominator * d2.denominator;
+  }
+  void lowterms ()
+  {
+   long tnum, tden, temp, gcd;
+   tnum = labs(numerator);
+   tden = labs(denominator);
+   if( tden == 0 )
+     { cout << "Недопустимый знаменатель!"; exit(1); }
+   else if( tnum == 0 )
+     { numerator=0; denominator = 1; return; }
+   while(tnum !=0)
+   {
+     if( tnum < tden )
+       { temp=tnum; tnum=tden; tden=temp; }
+     tnum = tnum - tden;
+   }
+   gcd = tden;  
+   numerator = numerator / gcd;
+   denominator = denominator / gcd;
+  }
+  void vivod()
+  { cout << setw(4) << numerator  << "/" << denominator; }
+};
+int main()
+{
+  int number;
+  fraction d1, d2, d3;
+  d1.denominator = d2.denominator = number;
+  cout<<"Введите желаемый знаменатель" << endl; 
+  cin >> number;
+  for (int j = 1; j<number; j++)
+  {
+   d1.numerator = j;
+   d1.denominator = number;
+   d1.lowterms();
+   d1.vivod();
+  }
+  cout << endl;
+  for(int i = 1; i < number; i++)
+        {
+   d2.numerator=i;
+   d2.denominator=number;
+   d2.lowterms();
+   d2.vivod();
+  
+   for(int j = 1; j < number; j++)
+   {
+    d1.numerator=j;
+    d1.denominator=number;
+    d3.fmul(d1, d2);
+    d3.lowterms();
+    d3.vivod();
+   }
+   cout<<endl;
+  }
+ 
+ return 0;
+}
