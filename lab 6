@@ -1,4 +1,4 @@
-#include <iostream>//6
+#include <iostream>//4
 using namespace std;
 
 int maxint(int arr[], int n)
@@ -12,7 +12,7 @@ int maxint(int arr[], int n)
 
 int main()
 {
-	cout<<"Task 1"<<endl;
+	cout<<"Task 4"<<endl;
 	int N, arr[N];
 	cout<<"Введите размер массива:";
 	cin>>N;
