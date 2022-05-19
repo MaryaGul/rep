@@ -230,3 +230,44 @@ int main()
 	while (let == 'y');
 	return 0;
 }
+
+#include<iostream>//8
+using namespace std;
+
+const int LIMIT = 100;
+
+class Safearay
+{
+private:
+ int array[LIMIT];
+public:
+ void putel(int n, int temp)
+ {
+  if (n<0 || n>LIMIT-1)
+  {
+   cout << "Переполнение массива" << endl;;
+
+   exit(1);
+  }
+  array[n] = temp;
+ }
+ int getel(int n)
+ {
+  if (n<0||n>LIMIT-1)
+  {
+   cout << "Переполнение массива" << endl;;
+   exit(1);
+  }
+  return array[n];
+ }
+};
+int main()
+{
+    cout<<"Task 8"<<endl;
+   Safearay sal;
+   int temp = 12345;
+   sal.putel (7, temp);
+   temp = sal.getel (7);
+   cout <<"Присвоено "<< temp << endl;
+    return 0;
+}
