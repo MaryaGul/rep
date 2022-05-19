@@ -1,0 +1,95 @@
+#include <iostream>
+#include <string.h>
+ 
+using namespace std;
+ 
+class TGoods
+{
+    char *name;
+    int year;
+ 
+public:
+    TGoods();
+    TGoods(char *myN,int myD);
+    TGoods(int *I);     //получающий параметр –ссылку на класс TGoods
+    ~TGoods();
+ 
+    void in();
+    void out();
+    char search(int search);
+};
+ 
+ 
+/*========================== KONSTRUKTORS ==========================*/
+TGoods::TGoods()
+{
+    name=new char[25];
+    year=0;
+}
+ 
+TGoods::TGoods(char *myN,int myD)
+{
+    //name=new char[strlen(myN)+1];
+    strcpy(name,myN);
+    year=myD;
+ 
+}
+ 
+TGoods::~TGoods()
+{
+    delete[] name;
+}
+ 
+/*========================== FUNCTION ==========================*/
+void TGoods::in()
+{
+    cout<<"Введите наименование товара\t";
+    cin>>name;
+    cout<<"Введите год производства\t";
+    cin>>year;
+}
+ 
+void TGoods::out()
+{
+    cout<<"Наименование товара\t"<<name<<endl;
+    cout<<"Год производства\t"<<year<<endl;
+}
+ 
+char TGoods::search(int search)
+{
+    if(year==search)
+        return name[25];
+    else
+        return 0;
+}
+/*========================== MAIN ==========================*/
+void main()
+{
+    setlocale(LC_ALL, "Russian");
+    TGoods A;
+ 
+    cout<<"Проверяем работу функций..\n";
+    A.in();
+    A.out();
+ 
+    int m,search,i;
+    char *O=new char[25];
+    cout<<"введите размер массива ";
+    cin>>m;
+    TGoods *B;
+    B=new TGoods[m];
+    for(i=0;i<m;i++)
+        B[m].in();
+ 
+    cout<<"введите год товара который будем искать ";
+    cin>>search;
+ 
+    for(i=0;i<m;i++)
+    {
+        *O=B[m].search(search);
+        if(*O!=0)
+            cout<<O[25]<<endl;
+    }
+ 
+ 
+}
