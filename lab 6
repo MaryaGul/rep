@@ -36,44 +36,46 @@ class Fraction
  public:
   Fraction():numerator(), denominator()
   {}
-  void get_fr() //метод получания дроби
+  int numeratorr =13, denominatorr = 12; ;
+  void vvod() 
   {
    char simb;
    cout<<"Введите желаемую дробь: "<<endl;
    cin>>numerator>>simb>>denominator;
   }
-  void add_fr(Fraction f1, Fraction f2) //метод сложения двух дробей
+  void fadd(Fraction f1, Fraction f2) 
   {
    numerator = f1.numerator * f2.denominator + f1.denominator * f2.numerator;
    denominator = f1.denominator * f2.denominator;
   }
-  void mul_fr (Fraction f1, int n) //метод деления суммы дробей на количество их самих (умножение знаменателя на это число)
+  void fm(Fraction f1, int n) 
   {
    denominator = f1.denominator * n;
   }
 
-  void lowterms () //метод сокращения дроби
+  void lowterms () 
   {
    long tnum, tden, temp, gcd;
-   tnum = labs(numerator);            // используем неотрицательные
-   tden = labs(denominator);            // значения (нужен cmath)
-   if( tden == 0 )              // проверка знаменателя на 0
+   tnum = labs(numerator);            
+   tden = labs(denominator);          
+   if( tden == 0 )           
      { cout << "Недопустимый знаменатель!"; exit(1); }
-   else if( tnum == 0 )         // проверка числителя на 0
+   else if( tnum == 0 )         
      { numerator=0; denominator = 1; return; }
-// нахождение наибольшего общего делителя
+
    while(tnum !=0)
    {
-     if( tnum < tden )          // если числитель больше знаменателя,
-       { temp=tnum; tnum=tden; tden=temp; } //меняем их местами
-     tnum = tnum - tden;        // вычитание
+     if( tnum < tden )         
+       { temp=tnum; tnum=tden; tden=temp; } 
+     tnum = tnum - tden;        
    }
-   gcd = tden;                  // делим числитель и знаменатель на
-   numerator = numerator / gcd;             // полученный наибольший общий делитель
+   gcd = tden;                  
+   numerator = numerator / gcd;             
    denominator = denominator / gcd;
   }
-  void disp_fr()
-  { cout << "Среднее арифмитическое этих дробей " << numerator << "/" << denominator << endl; }
+  
+  void vivod()
+  { cout << "Среднее арифмитическое этих дробей " << numeratorr << "/" << denominatorr << endl; }
 };
 int main()
 {
@@ -83,16 +85,16 @@ int main()
  cout<<"Введите кол-во дробей, среднее арифмитическое которых вы хотите найти: ";
  cin>>n;
  for (int i = 0; i <n; i++){
-    array[i].get_fr(); 
+    array[i].vvod(); 
  }
- for (int j = 0; j<n; j++) //сложение дробей
+ for (int j = 0; j<n; j++) 
  {
-  tempsum.add_fr(array[j], array[j++]);
+  tempsum.fadd(array[j], array[j++]);
   j++;
-  sum.add_fr(tempsum, sum);
+  sum.fadd(tempsum, sum);
  }
- sum.mul_fr(sum, n); //деление на их кол-во
- sum.disp_fr();  //вывод на экран
+ sum.fm(sum, n); 
+ sum.vivod();  
  return 0;
 }
 
