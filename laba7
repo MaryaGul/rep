@@ -524,3 +524,92 @@ int main()
 
     return 0;
 }
+
+
+#include <iostream>//11
+using namespace std;
+const int Ptosh = 20;
+const int Olshtoolp = 12;
+
+class Sterling
+{
+private:
+	long pounds;
+	int shillings;
+	int pence;
+public:
+	Sterling() : pounds(0), shillings(0), pence(0) {}
+	Sterling(long pounds, int shillings, int pence) : pounds(pounds), shillings(shillings), pence(pence)
+	{
+		*this = normalize(*this);
+	}
+	Sterling(double newPounds)
+	{
+		pounds = (long)newPounds;
+		newPounds = (newPounds - pounds) * Ptosh;
+		shillings = (int)newPounds;
+		newPounds = (newPounds - shillings) * Olshtoolp;
+		pence = (int)newPounds;
+	}
+	Sterling operator+(Sterling s)
+	{
+		return Sterling((double)*this + (double)s);
+	}
+	Sterling operator-(Sterling s)
+	{
+		return Sterling((double)*this - (double)s);
+	}
+	Sterling operator*(double d)
+	{
+		return Sterling((double)*this * d);
+	}
+	double operator/(Sterling s)
+	{
+		return (double)*this / (double)s;
+	}
+	Sterling operator/(double d)
+	{
+		return Sterling((double)*this * d);
+	}
+	operator double()
+	{
+		return pounds + (shillings + pence / (double)Olshtoolp) / (double)Ptosh;
+	}
+	void get()
+	{
+		char ch;
+		cin >> ch >> pounds >> ch >> shillings >> ch >> pence;
+	}
+	void vivod()
+	{
+		cout << '&' << pounds << '.' << shillings << '.' << pence;
+	}
+	Sterling normalize(Sterling s)
+	{
+		s.shillings += s.pence / Olshtoolp;
+		s.pounds += s.shillings / Ptosh;
+
+		s.pence %= Olshtoolp;		
+		s.shillings %= Ptosh;
+		return s;
+	}
+};
+int main()
+{
+	cout<<"Task 11"<<endl;
+	Sterling s1(46, 15, 11), s2;
+	double d = 4.4;
+	cout << "Введите сумму: ";
+	s2.get();
+	cout << "\ns1+s2 ";
+	(s1 + s2).vivod();
+	cout << "\ns1-s2 ";
+	(s1 - s2).vivod();
+	cout << "\ns1*d ";
+	(s1 * d).vivod();
+	cout << "\ns1/s2 ";
+	cout << (s1 / s2);
+	cout << "\ns1/d ";
+	(s1 / d).vivod();
+	return 0;
+}
