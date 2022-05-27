@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+
+class timee
+{
+private:
+	int hours, minutes, seconds;
+public:
+	timee() : hours(0), minutes(0), seconds(0)
+	{  }
+	timee(int h, int m, int s) : hours(h), minutes(m), seconds(s)
+	{  }
+	void vivod()
+	{
+		cout<<hours << ":" << minutes << ":" << seconds<<endl;
+	}
+	
+	timee operator++()
+	{
+		if (++seconds > 59)
+		{
+			seconds -= 60;
+			minutes++;}
+			
+		if (minutes > 59)
+		{	minutes -= 60;
+			hours++; }
+	
+		return *this;
+	}
+    timee operator--()
+	{
+		if (--seconds < 0)
+		{
+			seconds += 60; 
+			minutes--;
+		}
+		if (minutes < 0)
+		{
+			minutes += 60; 
+			hours--;
+		}
+		return *this;
+	}
+	timee operator++(int)
+	{
+		timee temp(hours, minutes, seconds);
+		++(*this);
+		return temp;
+	}
+	timee operator--(int)
+	{
+		timee temp(hours, minutes, seconds);
+		--(*this);
+		return temp;
+	}
+};
+
+int main()
+{
+	timee time1(3, 59, 59);
+	cout << "Исходное время: "; time1.vivod();
+	cout << "Время++: "; time1++.vivod();
+	cout << "Время: "; time1.vivod();
+	cout << "++время: "; (++time1).vivod();
+	cout << endl;
+	cout << "Исходное время: "; time1.vivod();
+	cout << "время--: "; time1--.vivod();
+	cout << "Время: "; time1.vivod();
+	cout << "--время: "; (--time1).vivod();
+	cout << endl;
+	return 0;
+}
