@@ -1,4 +1,4 @@
-#include <iostream>
+#include <iostream>//6
 using namespace std;
 
 class timee
@@ -68,6 +68,122 @@ int main()
 	cout << "время--: "; time1--.vivod();
 	cout << "Время: "; time1.vivod();
 	cout << "--время: "; (--time1).vivod();
+	cout << endl;
+	return 0;
+}
+
+
+#include <iostream>//7
+using namespace std;
+
+class timee
+{
+private:
+	int hours, minutess, secondss;
+public:
+	timee() : hours(0), minutess(0), secondss(0)
+	{  }
+	timee(int h, int m, int s) : hours(h), minutess(m), secondss(s)
+	{  }
+	void vivod()
+	{
+		cout << hours << ":" << minutess << ":" << secondss<<endl;
+	}
+	timee operator+(timee t2)
+	{
+		int s = secondss + t2.secondss;
+		int m = minutess + t2.minutess;
+		int h = hours + t2.hours;
+		if (s > 59)
+		{
+			s -= 60; m++;
+		}
+		if (m > 59)
+		{
+			m -= 60; h++;
+		}
+		return timee(h, m, s);
+	}
+	timee operator-(timee t2)
+	{
+		int s = secondss - t2.secondss;
+		int m = minutess - t2.minutess;
+		int h = hours - t2.hours;
+		if (s < 0)
+		{
+			s += 60; m--;
+		}
+		if (m < 0)
+		{
+			m += 60; h--;
+		}
+		return h < 0 ? timee() : timee(h, m, s);
+	}
+	timee operator*(float mul)
+	{
+		int s = secondss * mul;
+		int m = minutess * mul;
+		int h = hours * mul;
+		if (s > 59)
+		{
+			s %= 60; m += s / 60;
+		}
+		if (m > 59)
+		{
+			m %= 60; h += m / 60;
+		}
+		return timee(h, m, s);
+	}
+timee operator++()
+	{
+		if (++secondss > 59)
+		{
+			secondss -= 60;
+			minutess++;
+		}
+		if (minutess > 59)
+		{
+			minutess -= 60;
+			hours++;
+		}
+		return *this;
+	}
+	timee operator--()
+	{
+		if (--secondss < 0)
+		{
+			secondss += 60; 
+			minutess--;
+		}
+		if (minutess < 0)
+		{
+			minutess += 60; 
+			hours--;
+		}
+		return *this;
+	}
+	timee operator++(int)
+	{
+		timee temp(hours, minutess, secondss);
+		++(*this);
+		return temp;
+	}
+	timee operator--(int)
+	{
+		timee temp(hours, minutess, secondss);
+		--(*this);
+		return temp;
+	}
+};
+
+int main()
+{
+	timee time1(7, 40, 59);
+	timee time2(2, 11, 20);
+	cout << "Время1:   "; time1.vivod();
+	cout << "Время2:   "; time2.vivod();
+	cout << "Время1-время2:   "; (time1-time2).vivod();
+	cout << "Время1*6.7:   "; (time1 * 6.7).vivod();
 	cout << endl;
 	return 0;
 }
