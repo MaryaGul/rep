@@ -380,3 +380,46 @@ int main()
   
     return 0;
 }
+
+
+
+#include <iostream>//9
+using namespace std;
+const int LIMIT = 100;
+
+class safearray
+{
+private:
+ int arr[LIMIT];
+public:
+ 
+ int& operator[](int n)
+ {
+  if(n < 0 || n >= LIMIT)
+  {
+   cout << "Ошибочный индекс!"; exit(1);
+  }
+  return arr[n];
+ }
+};
+
+int main()
+{
+    cout<<"Task 9"<<endl;
+ safearray sa1;
+ int up, down, down2, differ=0;
+ cout << "Введите верхнюю границу массива" << endl; cin >> up;
+ cout << "Введите нижнюю границу массива" << endl; cin >> down;
+ differ = up - 100;
+ down2 = down;
+ for(int i = down-differ; i < up-differ; i++)
+  sa1[i] = (down2++) * 10;  
+
+ for( int i = down-differ; i < up-differ; i++)
+ {
+  int temp = sa1[i];  
+  cout << "Элемент " << down++  << " равен " << temp << endl;
+ }
+
+ return 0;
+}
