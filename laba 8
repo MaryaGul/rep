@@ -571,4 +571,130 @@ int main()
 }
 
 
-
+#include <iostream> //12
+using namespace std;
+class sterling {
+private:
+long pounds;
+int shillings, pence;
+public:
+    sterling() : pounds(0), shillings(0), pence(0) {}
+    sterling(long p, int s, int pen) : pounds(p), shillings(s), pence(pen) {}
+    sterling(double newpounds) {
+    pounds = (long)newpounds;
+    newpounds = (newpounds - pounds) * 20;
+    shillings = (int)newpounds;
+    newpounds = (newpounds - shillings) * 12;
+    pence = (int)newpounds;
+    }
+    sterling operator + (sterling s) {
+    return sterling((double)*this + (double)s);
+    }
+    sterling operator - (sterling s) {
+    return sterling((double)*this - (double)s);
+    
+    }
+    sterling operator * (double d) {
+    return sterling((double)*this * d);
+    }
+    double operator / (sterling s) {
+    return (double)*this / (double)s;
+    }
+    sterling operator / (double d) {
+    return sterling((double)*this * d);
+    }
+    operator double() {
+    return pounds + (shillings + pence / (double)12) / (double)20;
+    }
+    void get() {
+    cout << "Введите сумму: ";
+    cin >> pounds >> shillings >> pence;
+    }
+    void put() {
+    cout << pounds << '.' << shillings << '.' << pence;
+    }
+    sterling normalize(sterling s) {
+    s.shillings += s.pence / 12;
+    s.pounds += s.shillings / 20;
+    s.pence %= 12;
+    s.shillings %= 20;
+    return s;
+    }
+    };
+    class sterfrac : public sterling {
+    private: int eighths;
+    public: sterfrac() : sterling() {}
+    sterfrac(long p, int s, int pen, int e = 0) : eighths(e),
+    sterling(p, s, pen) {}
+    sterfrac(double newPounds) : sterling(newPounds) {
+    newPounds = (newPounds - (long)newPounds) * 20;
+    newPounds = (newPounds - (int)newPounds) * 12;
+    eighths = (newPounds - (int)newPounds) * 8;
+    }
+    sterfrac operator + (sterfrac s) {
+    return sterfrac((double)*this + (double)s);
+    }
+    sterfrac operator - (sterfrac s) {
+    return sterfrac((double)*this - (double)s);
+    }
+    sterfrac operator * (double d) {
+    
+    return sterfrac((double)*this * d);
+    }
+    double operator / (sterfrac s) {
+    return (double)*this / (double)s;
+    }
+    sterfrac operator / (double d) {
+    return sterfrac((double)*this * d);
+    }
+    operator double() {
+    return sterling::operator double() +
+    eighths / 8.0 / 12 / 20;
+    }
+    void get() {
+    int a, b;
+    sterling::get();
+    cin >> a >> b;
+    eighths = a * 8 / b;
+    }
+    void put() {
+    sterling::put();
+    int tnum, tden, temp;
+    tnum = eighths;
+    tden = 8;
+    while (tnum != 0) {
+    if (tnum < tden) {
+    temp = tnum;
+    tnum = tden;
+    tden = temp;
+    }
+    tnum -= tden;
+    }
+    cout << '-' << eighths / tden << '/' << 8 / tden;
+    }
+    sterfrac normalize(sterfrac s) {
+    int a = eighths / 8;
+    if (a != 0) {
+    s = (sterfrac)((sterling)s + sterling(0, 0, a));
+    s.eighths = eighths % 8;
+    }
+    return (sterfrac)sterling::normalize(s);;
+    }
+    };
+    int main() { 
+    cout<<"Task 12"<<endl;
+    sterfrac s1, s2;
+    double d = 3.3;
+    
+    s1.get();
+    s2.get();
+    cout << "s1+s2 = " << endl;
+    (s1 + s2).put();
+    cout << endl << "s1-s2 = " << endl;
+    (s1 - s2).put();
+    cout << endl << "s1*d = " << endl;
+    (s1 * d).put();
+    cout << endl << "s1/s2 = " << (s1 / s2);
+    cout << endl << "s1/d = " << endl;
+    (s1 / d).put();
+}
