@@ -282,3 +282,89 @@ int main()
 	return 0;
 }
 
+#include <iostream>//9
+#include <string>
+using namespace std;
+
+class publication                     
+{
+private:
+	string title;
+	float price;
+public:
+	void vvod()
+	{
+		cout << "Введите название: "; cin >> title;
+		cout << "Введите цену: "; cin >> price;
+	}
+	void vivod() 
+	{
+		cout << "Название: " << title<<endl;
+		cout << "Цена: " << price<<endl;
+	}
+};
+
+class publication2 : public publication
+{
+private:
+	string date;
+public:
+	void vvod()
+	{
+		publication::vvod();
+		cout << "Введите дату: "; cin >> date;
+	}
+	void vivod() 
+	{
+		publication::vivod();
+		cout << "Дата: " << date<<endl;
+	}
+};
+class book : private publication2    
+{
+private:
+	int pages;
+public:
+	void vvod()
+	{
+		publication2::vvod();
+		cout << "Введите номер страницы: "; cin >> pages;
+	}
+	void vivod() 
+	{
+		publication2::vivod();
+		cout << "Старницы: " << pages<<endl;
+	}
+};
+class tape : private publication2     
+{
+private:
+	float timee;
+public:
+	void vvod()
+	{
+		publication2::vvod();
+		cout << "Введите время записи книги: "; cin >> timee;
+	}
+	void vivod() 
+	{
+		publication2::vivod();
+		cout << "Время записи книги: " << timee<<endl;
+	}
+};
+
+int main()
+{
+	book b;                        
+	tape t;
+    cout<<"Task 9"<<endl;
+	b.vvod(); 
+	cout<<endl;
+	t.vvod();
+    cout<<endl;
+	b.vivod();      
+	cout<<endl;
+	t.vivod();
+	cout << endl;
+	return 0;
+}
