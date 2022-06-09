@@ -491,3 +491,84 @@ int main()
      return 0;
 }
 
+#include <iostream>
+using namespace std;
+const int LIMIT = 100;
+class Pair
+{
+public:
+	int Item1;
+	int Item2;
+	Pair() : Item1(0), Item2(0) 
+	{}
+	Pair(int item1, int item2) : Item1(item1), Item2(item2)
+	{}
+};
+class Stack
+{
+private:
+	int _arr[LIMIT];
+	int _next;
+public:
+	Stack() : _next(0)
+	{}
+	void push(int el)
+	{
+		if (_next == LIMIT)
+		{
+			cout << "\nStack overflow\n";
+			return;
+		}
+		_arr[_next++] = el;
+	}
+	int pop()
+	{
+		if (_next == 0)
+		{
+			cout << "\nStack is empty\n";
+			return 0;
+		}
+		return _arr[--_next];
+	}
+};
+class pairStack : public Stack
+{
+public:
+	pairStack() : Stack()
+	{}
+	void push(Pair el)
+	{
+		Stack::push(el.Item1);
+		Stack::push(el.Item2);
+	}
+	Pair pop()
+	{
+		int item2 = Stack::pop();
+		int item1 = Stack::pop();
+		return Pair(item1, item2);
+	}
+};
+
+
+int main()
+{
+	cout<<"Task 11"<<endl;
+	pairStack s;
+	Pair p;
+	for (int i = 0; i < 10; i++)
+	{
+		p.Item1 = i * i + 3 * i;
+		p.Item2 = i * i - 2 * i;
+		s.push(p);
+		cout << "В стэк положена пара: " << p.Item1 << " - " << p.Item2 << endl;
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		Pair newp = s.pop();
+		cout << "Из стэка взята пара: " << newp.Item1 << " - " << newp.Item2 << endl;
+	}
+	return 0;
+}
+
+
+
