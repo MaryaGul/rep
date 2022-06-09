@@ -251,3 +251,58 @@ int main()
     for (int i = 0; i < 100; i++)
     cout << (i % 10 == 0 ? "\n" : " ") << setw(3) << arr[i];
 }
+
+#include <iostream> //12
+#include <iostream>
+using namespace std;
+const int MAX = 100;
+float fmemory[MAX];
+int fmem_top = 0;
+int pmemory[MAX];
+int pmem_top = 0;
+class Float
+{
+private:
+int addr;
+public:
+Float(float value)
+{
+    addr = fmem_top;
+    fmemory[fmem_top++] = value;
+    }
+    int operator&()
+    {
+    return addr;
+    }
+    };
+    class ptrFloat
+    {
+    private:
+    int addr;
+    public:
+    ptrFloat(int ptr)
+    {
+    addr = pmem_top;
+    pmemory[pmem_top++] = ptr;
+}
+
+    float& operator*()
+{
+return fmemory[pmemory[addr]];
+    }
+};
+int main() 
+{
+    cout<<"Task 12"<<endl;
+    Float varl = -1.234f; 
+    Float var2 = 5.678f; 
+    ptrFloat ptrl = &varl; 
+    ptrFloat ptr2 = &var2; 
+    cout << "*ptrl = " << *ptrl << endl; 
+    cout << "*ptr2 = " << *ptr2 << endl; 
+    *ptrl = 7.123f; 
+    *ptr2 = 8.456f;
+    cout << "*ptrl = " << *ptrl << endl; 
+    cout << "*ptr2 = " << *ptr2 << endl;
+    return 0;
+    }
