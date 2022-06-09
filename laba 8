@@ -368,3 +368,126 @@ int main()
 	cout << endl;
 	return 0;
 }
+
+#include <iostream>//10
+using namespace std;
+const int LEN = 80;       
+
+class student             
+{
+private:
+ char school[LEN];     
+ char degree[LEN];     
+public:
+ void vvodedu()
+ {
+  cout << "Введите название учебного заведения: ";
+  cin >> school;
+  cout << "Введите степень высшего образования"<<endl;
+  cout << "неполное высшее, бакалавр, магистр, кандидат наук): ";
+  cin >> degree;
+ }
+ void vivodedu() const
+ {
+  cout << "Учебное заведение: " << school<<endl;
+  cout << "Степень: " << degree<<endl;
+ }
+};
+
+class employee            
+{
+private:
+ char name[LEN];       
+ unsigned long number; 
+public:
+ void vvod()
+ {
+  cout << "Введите фамилию: "; cin >> name;
+  cout << "Введите номер: ";     cin >> number;
+ }
+ void vivod() const
+ {
+  cout << "Фамилия: " << name<<endl;
+  cout << "Номер: " << number<<endl;
+ }
+};
+
+class manager : private employee, private student 
+{
+private:
+ char title[LEN];     
+ double  dues;         
+public:
+ void vvod()
+ {
+  employee::vvod();
+  cout << "Введите должность: "; cin >> title;
+  cout << "Введите сумму взносов в гольф-клуб: "; cin >> dues;
+  student::vvodedu();
+ }
+ void vivod() const
+ {
+  employee::vivod();
+  cout << "Должность: " << title<<endl;
+  cout << "Сумма взносов в гольф-клуб: " << dues<<endl;
+  student::vivodedu();
+ }
+};
+
+class executive : public manager
+{
+private:
+ float premium;
+ int stock;
+public:
+ void vvod()
+ {
+  manager::vvod();
+  cout << "Введите премию: "; cin >> premium;
+  cout << "Введите количество акций: "; cin >> stock;
+ }
+ void vivod()const
+ {
+  manager::vivod();
+  cout << "Премия: " << premium;
+  cout << "Количество акций: " << stock<<endl;
+ }
+};
+
+class scientist : private employee, private student 
+{
+private:
+ int pubs;           
+public:
+ void vvod()
+ {
+  employee::vvod();
+  cout << "Введите количество публикаций: "; cin >> pubs;
+  student::vvodedu();
+ }
+ void vivod() const
+ {
+  employee::vivod();
+  cout << "Количество публикаций: " << pubs<<endl;
+  student::vivodedu();
+ }
+};
+
+class laborer : public employee 
+{
+};
+
+int main()
+{
+    cout<<"Task 10"<<endl;
+    executive e;
+	cout << endl;
+	cout << "Введите информацию"<<endl;
+	e.vvod();
+	cout<<endl;
+	e.vivod();
+	cout << endl;
+
+     return 0;
+}
+
