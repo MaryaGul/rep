@@ -1,0 +1,91 @@
+#include<iostream>//4
+#include <string>
+using namespace std;
+
+class publication
+{
+private:
+ string name;
+ float price;
+public:
+ void vvod()
+ {
+  cout<<"Введите название книги: ";
+  cin>>name;
+  cout<<"Введите цену книги: ";
+  cin>>price;
+ }
+ void vivod()
+ {
+  cout<<"Название книги: "<<name <<endl;
+  cout<<"Цена книги: "<<price<<endl;
+ }
+};
+
+const int month = 3;
+
+class sales
+{
+private:
+ float sales [month];
+public:
+ void vvod()
+ {
+  for (int j = 1; j <= month; j++)
+  {
+  cout << "Введите продажи книг за  " << j << " месяца: ";
+  cin >> sales[j];
+  }
+ }
+ void vivod()
+ {
+  for (int j = 1; j <= month; j++)
+  {
+  cout << "Продажи за " << j << " месяца: ";
+  cout << sales[j]<<endl;
+  }
+ }
+};
+
+class disk : private sales, private publication
+{
+private:
+ enum etype {CD, DVD};
+public:
+ void vvod()
+ {
+  etype diskt;
+  char type;
+  publication::vvod();
+  cout << "Какой тип диска? (c/d): ";
+  cin >> type;
+  if (type = 'c')
+   diskt = CD;
+  else diskt = DVD;
+
+  sales::vvod();
+ }
+ void vivod()
+ {
+  publication::vivod();
+  etype diskt;
+  char type;
+  cout << "Тип диска: ";
+  if (diskt = CD)
+   cout << "CD"<<endl;
+  else
+   cout << "DVD"<<endl;
+  sales::vivod();
+ }
+};
+
+int main()
+{
+    cout<<"Task 4"<<endl;
+	disk b;
+	b.vvod();
+	cout << endl;
+	b.vivod();
+	cout << endl;
+	return 0;
+}
