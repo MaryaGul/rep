@@ -221,3 +221,33 @@ int main()
     for (int j = 0; j < 10; j++, cout << " ")
     cout << setw(4) << *(*(arr + i) + j);
 }
+
+#include <iostream> //11
+#include <iomanip>
+using namespace std;
+class sarray
+{
+private:
+int* p[10];
+public:
+sarray()
+{
+    for (int i = 0; i < 10; i++)
+    *(p + i) = new int[10];
+    }
+    int& operator[](int indtask)
+    {
+    return *(*(p + indtask / 10) + indtask % 10);
+}
+};
+int main() 
+{
+    cout<<"Task 11"<<endl;
+    sarray arr;
+    for (int i = 0; i < 100; i++)
+    {
+    arr[i] = i;
+    }
+    for (int i = 0; i < 100; i++)
+    cout << (i % 10 == 0 ? "\n" : " ") << setw(3) << arr[i];
+}
