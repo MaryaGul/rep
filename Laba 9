@@ -59,3 +59,70 @@ int main()
     cout << strcmp(ch4, ch5) << endl;
     return 0;
 }
+#include <iostream> //7
+#include <iostream>
+using namespace std;
+class person
+{
+protected:
+string name;
+float sal;
+public:
+
+    void setData()
+    {
+    cout << "Введите имя: "; 
+    cin >> name;
+    cout << "Введите зарплату: ";
+    cin >> sal;
+    }
+    void printData()
+    {
+    cout << endl << name << " " << sal;
+    }
+    string getName()
+    {
+    return name;
+    }
+    float getSalary()
+    {
+    return sal;
+    }
+    };
+    void salsort(person** pp, int n)
+    {
+    for (int i = 0; i < n; i++)
+    for (int j = 0; j < n - i - 1; j++)
+    if ((*(pp + j))->getSalary() > (*(pp + j + 1))->getSalary())
+    {
+    person* temp = *(pp + j);
+    *(pp + j) = *(pp + j + 1);
+    *(pp + j + 1) = temp;
+}
+}
+int main() { 
+    cout<<"Task 7"<<endl;
+    person* pers[100];
+    int n = 0;
+    char let;
+    do {
+    pers[n] = new person;
+    pers[n]->setData();
+    n++;
+    cout << "Желаете повторить?(y/n): ";
+    cin >> let;
+    } while (let == 'y');
+    cout << endl << "Первоначальный список :";
+    for (int j = 0; j < n; j++)
+    {
+    pers[j]->printData();
+    }
+    
+    salsort(pers, n);
+    cout << endl << "Сортированный список:";
+    for (int j = 0; j < n; j++)
+    {
+    pers[j]->printData();
+    }
+    cout << endl;
+}
