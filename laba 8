@@ -89,3 +89,76 @@ int main()
 	cout << endl;
 	return 0;
 }
+
+#include <iostream>//5
+using namespace std;
+
+const int LEN = 80;
+
+class employee
+{
+private:
+	char name[LEN];
+	unsigned long number;
+public:
+	void vvod()
+	{
+		cout << "Введите фамилию сотрудника: "; cin >> name;
+		cout << "Введите номер сотрудника: ";      cin >> number;
+	}
+	void vivod() 
+	{
+		cout << "Фамилия сотрудника: " << name<<endl;
+		cout << "Его номер: " << number<<endl;
+	}
+};
+
+class employee2 : private employee
+{
+private:
+	double compensation;
+	enum payperiod { Hourly, Weekly, Monthly } period;
+public:
+void vvod()
+	{
+		employee::vvod();
+		cout << "Введите оплату: ";
+		cin >> compensation;
+		char let;
+		cout << "Введите период оплаты работы сотрудника(h/w/m): "; 
+		cin >> let;
+		switch (let)
+		{
+		case 'h': period = Hourly; break;
+		case 'w': period = Weekly; break;
+		case 'm': period = Monthly; break;
+		default: cout << "Такой оплаты нет!"; break;
+		}
+
+	}
+	void vivod()
+	{
+		employee::vivod();
+		cout << "Оплата: "; cout << compensation<<endl;
+		cout << "Период оплаты: ";
+		switch (period)
+		{
+		case Hourly: cout << "Почасовая"; break;
+		case Weekly: cout << "Понедельная"; break;
+		case Monthly: cout << "Помесячная"; break;
+		default: cout << "Такой оплаты нет!"; break;
+		}
+	}
+
+};
+
+int main()
+{
+    cout<<"Task 5"<<endl;
+	employee2 emp;
+	emp.vvod();
+	cout<<endl;
+	emp.vivod();
+	cout << endl;
+	return 0;
+}
