@@ -1,0 +1,79 @@
+#include <iostream> //2
+#include <string>
+using namespace std;
+
+class publication
+{
+private:
+	string title;
+	float price;
+public:
+	virtual void vvod()
+	{
+		cout << "\nВведите название: "; cin >> title;
+		cout << "Введите цену: "; cin >> price;
+	}
+	virtual void vivod()
+	{
+		cout << "\n\nНазвание: " << title;
+		cout << "\nЦена: " << price;
+	}
+};
+
+class book : public publication
+{
+private:
+	int pages;
+public:
+	void vvod()
+	{
+		publication::vvod();
+		cout << "Введите количество страниц: "; cin >> pages;
+	}
+	void vivod()
+	{
+		publication::vivod();
+		cout << "\nСтраницы: " << pages;
+	}
+};
+class tape : public publication
+{
+private:
+	float timee;
+public:
+	void vvod()
+	{
+		publication::vvod();
+		cout << "Введите время проигрывания: "; cin >> timee;
+	}
+	void vivod()
+	{
+		publication::vivod();
+		cout << "\nВремя проигрывания: " << timee;
+	}
+};
+
+int main() 
+{
+    cout<<"Task 2"<<endl;
+	publication* pubarr[100];          
+	int n = 0;                         
+	char choice;                       
+
+	do {
+		cout << "Введите данные для книги или ленты (b/t)? ";
+		cin >> choice;
+		if (choice == 'b')               
+			pubarr[n] = new book;        
+		else                            
+			pubarr[n] = new tape;       
+		pubarr[n++]->vvod();         
+		cout << "   Введёте другую (y/n)? ";  
+		cin >> choice;
+	} while (choice == 'y');              
+
+	for (int j = 0; j < n; j++)             
+		pubarr[j]->vivod();           
+	cout << endl;
+	return 0;
+}
