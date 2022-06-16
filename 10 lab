@@ -184,3 +184,92 @@ int main()
 		cout << arr3[j] << ' ';
 	cout << endl;
 }
+#include <iostream> //5
+#include <string>
+using namespace std;
+
+class publication
+{
+private:
+	string title;
+	float price;
+public:
+	virtual void vvod()
+	{
+		cout << "\nВведите название: "; cin >> title;
+		cout << "Введите цену: "; cin >> price;
+	}
+	virtual void vivod()
+	{
+		cout << "\n\nНазвание: " << title;
+		cout << "\nЦена: " << price;
+	}
+	virtual bool isOveersize()
+	{
+		return false;
+	}
+};
+class book : public publication
+{
+private:
+	int pages;
+public:
+	void vvod()
+	{
+		publication::vvod();
+		cout << "Введите кол-во страниц: "; cin >> pages;
+	}
+	void vivod()
+	{
+		publication::vivod(); cout << "\nСтраницы: " << pages;
+	}
+	bool isOveersize()
+	{
+		return pages > 800;
+	}
+};
+class tape : public publication
+{
+private:
+	float timee;
+public:
+	void vvod()
+	{
+		publication::vvod();
+		cout << "Введите время проигрывания: "; cin >> timee;
+	}
+	void vivod()
+	{
+		publication::vivod(); cout << "\nВремя проигрывания: " << timee;
+	}
+	bool isOveersize()
+	{
+		return timee > 90;
+	}
+};
+int main() 
+{
+    cout<<"Task 5"<<endl;
+	publication* pubarr[100];          
+	int n = 0;                         
+	char choice;                       
+	do {
+		cout << "\nВведите тип(книга или лента) (b/t)? "; cin >> choice;
+		if (choice == 'b') pubarr[n] = new book;
+		else  pubarr[n] = new tape;       
+		do {
+			pubarr[n]->vvod();
+			if (pubarr[n]->isOveersize())
+				cout << "Переполненно!\n";
+			else break;
+		} while (true);
+		n++;
+		cout << "   Введите еще другую (y/n)? ";  
+		cin >> choice;
+	} while (choice == 'y');              
+
+	for (int j = 0; j < n; j++)            
+		pubarr[j]->vivod();          
+	cout << endl;
+	return 0;
+}
