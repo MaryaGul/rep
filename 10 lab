@@ -273,3 +273,118 @@ int main()
 	cout << endl;
 	return 0;
 }
+#include <iostream> //6
+#include <string>
+#include <sstream>
+using namespace std;
+
+class money
+{
+private:
+	long double _sum;
+public:
+	money() {}
+	explicit money(long double sum) : _sum(sum) {}
+	long double mstold(string sum)
+	{
+		string res = "";
+		for (int i = 0; i < sum.length(); i++)
+		{
+			if (isdigit(sum[i]) || sum[i] == ',')
+				res += sum[i];
+		}
+		return stold(res.c_str());
+	}
+string ldtoms(long double sum)
+	{
+		if (sum > 9999999999999990.00) return "";
+		ostringstream strs;
+		strs << fixed << sum;
+		string ustr = strs.str();
+		string newstr = "$";
+		int i, j;
+		for (i = 0; i < ustr.length() && (ustr[i] == '0' || ustr[i] == '.'); i++);
+		if (i > 1 && ustr[i - 1] == '.') i -= 2;
+		if (i == ustr.length()) return "$0,00";
+		for (j = ustr.length() - 1; j >= 0 && ustr[j] != '.'; j--);
+		j += 2;
+		for (; i <= j; i++)
+		{
+			if (i != 0 && i < j - 2 && (j - i + 1) % 3 == 0) newstr += '.';
+			newstr += ustr[i] == '.' ? ',' : ustr[i];
+		}
+		return newstr;
+	}
+	void vvodmoney()
+	{
+		string str;
+		cout << "Введите сумму в долларах:\n"; cin >> str;
+		_sum = mstold(str);
+	}
+	void vivodmoney()
+	{
+		cout << "Сумма денег: " << ldtoms(_sum) << endl;
+	}
+	money operator+(money m)
+	{
+		return money(_sum + m._sum);
+	}
+	money operator-(money m)
+	{
+		return money(_sum - m._sum);
+	}
+	money operator*(long double ld)
+	{
+		return money(_sum * ld);
+	}
+	long double operator/(money m)
+	{
+		return _sum / m._sum;
+	}
+	money operator/(long double ld)
+	{
+		return money(_sum / ld);
+	}
+	friend money operator * (long double ld, money m);
+	friend money operator / (long double ld, money m);
+};
+money operator * (long double ld, money m)
+{
+	return money(m._sum * ld);
+}
+money operator / (long double ld, money m)
+{
+	return money(ld / m._sum);
+}
+int main() 
+{
+	cout<<"Task 6"<<endl;
+	money m1, m2;
+	long double s;
+	char ch;
+	do
+	{
+		m1.vvodmoney();
+		m2.vvodmoney();
+		cout << "Введите double: "; cin >> s;
+		cout << "m1 + m2: ";
+		(m1 + m2).vivodmoney();
+		cout << "m1 - m2: ";
+		(m1 - m2).vivodmoney();
+		cout << "m1 * s: ";
+		(m1 * s).vivodmoney();
+		cout << "m1 / m2: ";
+		cout << (m1 / m2) << endl;
+		cout << "m1 / s: ";
+		(m1 / s).vivodmoney();
+		cout << "s * m1: ";
+		(s * m1).vivodmoney();
+		cout << "s / m1: ";
+		(s / m1).vivodmoney();
+		cout << "Повторить (y/n)? ";
+		cin >> ch;
+	} while (ch != 'n');
+	return 0;
+}
+
+
