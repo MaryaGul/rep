@@ -387,4 +387,82 @@ int main()
 	return 0;
 }
 
+#include <iostream>//7
+#include <string>
+#include <sstream>
+#include <cmath>
+using namespace std;
+class money
+{
+private:
+	long double _sum;
+public:
+	money() {}
+	explicit money(long double sum) : _sum(sum) {}
+	long double mstold(string sum)
+	{
+		string res = "";
+		for (int i = 0; i < sum.length(); i++)
+		{
+			if (isdigit(sum[i]) || sum[i] == ',')
+				res += sum[i];
+		}
+		return stold(res.c_str());
+	}
+	string ldtoms(long double sum)
+	{
+		if (sum > 9999999999999990.00) return "";
+		ostringstream strs;
+		strs << fixed << sum;
+		string ustr = strs.str();
+		string newstr = "$";
+		int i, j;
+		for (i = 0; i < ustr.length() && (ustr[i] == '0' || ustr[i] == '.'); i++);
+		if (i > 1 && ustr[i - 1] == '.') i -= 2;
+		if (i == ustr.length()) return "$0,00";
+		for (j = ustr.length() - 1; j >= 0 && ustr[j] != '.'; j--);
+		j += 2;
+
+		for (; i <= j; i++)
+		{
+			if (i != 0 && i < j - 2 && (j - i + 1) % 3 == 0)
+				newstr += '.';
+			newstr += ustr[i] == '.' ? ',' : ustr[i];
+		}
+		return newstr;
+	}
+
+	void vvodmoney()
+	{
+		string str;
+		cout << "Введите сумму в долларах:\n";
+		cin >> str;
+		_sum = mstold(str);
+	}
+	void vivodmoney()
+	{
+		cout << "Сумма денег: " << ldtoms(_sum) << endl;
+	}
+	friend money round(money m);
+};
+money round(money m)
+{
+	long double temp = m._sum;
+	return money(modfl(m._sum, &temp) >= 0.5 ? temp + 1 : temp);
+}
+int main() 
+{
+	cout<<"Task 7"<<endl;
+	money m;
+	char ch;
+	do
+	{
+		m.vvodmoney();
+		round(m).vivodmoney();
+		cout << "Повторить (y/n)? ";
+		cin >> ch;
+	} while (ch != 'n');
+	return 0;
+}
+
 
