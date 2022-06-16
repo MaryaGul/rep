@@ -653,5 +653,91 @@ int main()
 }
 
 
+#include <iostream>//10
+using namespace std;
+
+struct link                           
+{
+	int data;                          
+	link* next;                        
+};
+class linklist                        
+{
+private:
+	link* first;                    
+public:
+	linklist()                      
+	{
+		first = NULL;
+	}
+	linklist(const linklist &list)                      
+	{
+		if (list.first == NULL) return;
+		first = new link();
+		first->data = list.first->data;
+		link *cur1 = first;
+		link *cur2 = list.first;				
+		while (cur2->next != NULL)
+		{
+			cur2 = cur2->next;
+			cur1->next = new link();
+			cur1 = cur1->next;
+			cur1->data = cur2->data;
+		} 
+	}
+	linklist& operator=(const linklist &list)
+	{
+		*this = linklist(list);
+		return *this;
+	}
+
+	~linklist();                    
+	void additem(int d);            
+	void display();                 
+};
+void linklist::additem(int d)        
+{
+	link* newlink = new link;          
+	newlink->data = d;                 
+	newlink->next = first;             
+	first = newlink;                   
+}
+void linklist::display()              
+{
+	link* current = first;             
+	while (current != NULL)           
+	{
+		cout << " " << current->data;  
+		current = current->next;        
+	}
+}
+linklist::~linklist()                 
+{
+	link* current = first;             
+	cout << "\nУдаление списка!\n";
+	while (current != NULL)           
+	{
+		link* temp = current;           
+		current = current->next;        
+		cout << temp->data << " ";
+		delete temp;                    
+	}
+}
+int main() 
+{
+	cout<<"Task 10"<<endl;
+	linklist *li = new linklist();       
+	cout << "\nНовый список:\n";
+	li->additem(16);    
+	li->additem(25);
+	li->additem(36);
+	li->additem(49);
+	li->display();      
+	linklist copy = *li;
+	delete li;
+	cout << "\nПроверка копии списка:\n";
+	copy.display();
+	cout << endl;
+}
 
 
