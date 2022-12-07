@@ -48,12 +48,15 @@ public:
     void pr_obh(Node* &aNode) {
  
     if (NULL == aNode) return; 
-    pr_obh(aNode->LeftNode);
-    pr_obh(aNode->RightNode); 
-    ofstream of("File.txt", ofstream::app);
+    
+     ofstream of("File.txt", ofstream::app);
     		if (aNode == NULL) return;
     		of << aNode->Data << " ";
     		of.close();
+		
+    pr_obh(aNode->LeftNode);
+    pr_obh(aNode->RightNode); 
+   
     }
     
     
