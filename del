@@ -1,0 +1,192 @@
+#include <iostream>
+#include <vector>
+#include <fstream>
+using namespace std;
+
+
+//Структура ветки
+
+struct Node {
+
+int Data; //Поле  для хранения данных
+Node* LeftNode; //указатель на левый дочерний узел
+Node* RightNode; //Указатель на правый дочерний узел
+
+};
+
+class binaryTree
+{
+private:
+	Node* aNode; //Указатель на корневой элемент
+	
+public:
+//Функция внесения данных
+
+    void Add(int aData, Node* &aNode) {
+    
+    //Если элемента не существует
+    
+    if (!aNode) { 
+
+    aNode = new Node; 
+    aNode->Data = aData; 
+    aNode->LeftNode = 0;
+    aNode->RightNode = 0;
+    
+    return;
+    
+    } else 
+   
+    if (aNode->Data > aData) { 
+        Add(aData, aNode->LeftNode); 
+    } else { 
+        Add(aData, aNode->RightNode);
+    }
+    
+    };
+    //прямой обход
+    void pr_obh(Node* &aNode) {
+ 
+    if (NULL == aNode) return; 
+    pr_obh(aNode->LeftNode);
+    pr_obh(aNode->RightNode); 
+    ofstream of("File.txt", ofstream::app);
+    		if (aNode == NULL) return;
+    		of << aNode->Data << " ";
+    		of.close();
+    }
+    
+    
+    
+    void add_elem(int aData, Node* &aNode) {
+        
+        if (!aNode) {
+        aNode = new Node;
+        aNode->Data = aData;
+        aNode->LeftNode = 0;
+        aNode->RightNode = 0;
+        return;
+        
+    } else {
+    
+        if (aData < aNode->Data) {
+            add_elem(aData, aNode->LeftNode);
+        
+        } else if (aData > aNode->Data) {
+            add_elem(aData, aNode->RightNode);
+            }
+        }
+    }
+    
+    
+    
+     Node *deleteNode(Node *aNode,  int Data) {
+      // Возвращаем, если дерево пустое
+      if (aNode == NULL) return aNode;
+    
+      // Ищем узел, который хотим удалить
+      if (Data < aNode->Data)
+        aNode->LeftNode = deleteNode(aNode->LeftNode, Data);
+      else if (Data > aNode->Data)
+        aNode->RightNode = deleteNode(aNode->RightNode, Data);
+      else {
+        // Если у узла один дочерний элемент или их нет
+        if (aNode->LeftNode == NULL) {
+          Node *temp = aNode->RightNode;
+          delete aNode;
+          return temp;
+        } else if (aNode->RightNode == NULL) {
+           Node *temp = aNode->LeftNode;
+          delete aNode;
+          return temp;
+        }
+    
+        // Если у узла два дочерних элемента
+        Node *temp = minValueNode(aNode->RightNode);
+    
+        aNode->Data = temp->Data;
+    
+        aNode->RightNode = deleteNode(aNode->RightNode, temp->Data);
+          }
+          return aNode;
+        }
+    
+        Node *minValueNode(Node *node) {
+          Node *current = node;
+        
+
+          while (current && current->LeftNode != NULL)
+            current = current->LeftNode;
+        
+      return current;
+    }
+	
+	
+	
+    bool exists(int value, Node*& node)	{
+        if (node == NULL) return false;
+        if (node->Data == value) return true;
+        if (value < node->Data) return exists(value, node->LeftNode);
+        return exists(value, node->RightNode);
+    }
+    
+    void save(Node*& node)
+    	{
+    		ofstream of("File.txt", ofstream::app);
+    
+    		if (node == nullptr) return;
+    
+    		of << node->Data << " ";
+    		of.close();
+    
+    		save(node->LeftNode);
+    		save(node->RightNode);
+    }
+    
+    };
+
+int main()
+
+{
+
+setlocale(LC_ALL, "rus");
+vector<int> treeElements = {  8, 2, 20, 3, 1, 9, 20, 21, 89, 15, 28, 23, 63 };
+Node* Root = 0;
+binaryTree tree;
+int element;
+for (int i = 0; i < treeElements.size(); i++) {
+    tree.Add(treeElements[i], Root);
+}
+int act;
+do
+	{
+		cout << "Какое действие сделать:\nДобавление - 1\nУдаление - 2\nОбход - 3\nПоиск - 4\nВыйти - 5\n";
+		cin >> act;
+		switch (act)
+		{
+		case 1:
+			cout << "Введите значение элемента: ";
+			cin >> element;
+			tree.add_elem(element, Root);
+			break;
+		case 2:;
+			cout << "Введите элемент который хотите удалить: ";
+			cin >> element;
+			tree.deleteNode(Root, element);
+			break;
+		case 3:
+			tree.pr_obh(Root);
+			cout << "\n";
+			break;
+		case 4:
+			cout << "Введите элемент который хотите найти: ";
+			cin >> element;
+			if(tree.exists(element, Root) == false){cout<<"Элемента в дереве нет"<<endl;}
+			else cout<<"Элемент в дереве есть"<<endl;
+			break;
+		}
+	} while (act!=5);
+	//tree.save(Root);
+return 0;
+
+}
